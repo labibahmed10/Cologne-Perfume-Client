@@ -1,12 +1,33 @@
 import React from "react";
 import { useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import Spinner from "../Spinner/Spinner";
 
 const SocialSignIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, Guser, Gloading, Gerror] = useSignInWithGithub(auth);
-  console.log(user);
-  console.log(error);
+
+  // if loading
+  if (loading || Gloading) {
+    return <Spinner></Spinner>;
+  }
+
+  //if user logged in succesfully
+  if (user || Guser) {
+    toast.success(`Log In Succesfull 😃 ${user?.user?.displayName ? user?.user?.displayName : ""}`, {
+      position: "top-center",
+      autoClose: 2000,
+    });
+  }
+
+  //if there any error occurs
+  if (error || Gerror) {
+    toast(`${error?.message || Gerror?.message}`, {
+      autoClose: 2100,
+    });
+  }
+
   return (
     <div>
       <div className="flex items-center justify-between my-5">
