@@ -10,7 +10,7 @@ const LogIn = () => {
   const logo = basicImage.find((item) => item?.name === "brand-logo");
   console.log(logo);
   return (
-    <div className="flex md:flex-row flex-col items-center md:h-[70vh] md:w-[90rem] w-full mx-auto justify-center px-6 mt-20">
+    <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-6 mt-20">
       <div className="md:w-full">
         <div className="px-16 py-8 border bg-[#EEEEF0] text-[#3D3D3D]">
           <div>
@@ -42,13 +42,13 @@ const LogIn = () => {
               className="w-full my-3 py-3 bg-[#9B5A43] text-lg font-semibold text-[aliceblue] cursor-pointer"
             />
 
-            <p className="text-center">
+            <p className="text-center md:text-xl mb-3">
               Don't have an account?{" "}
-              <Link className="text-[#9B5A43] hover:underline  underline-offset-1" to="/signup">
+              <Link className="text-[#9B5A43] hover:underline underline-offset-1" to="/signup">
                 Create an account
               </Link>
             </p>
-            <p className="text-center  mb-2 text-gray-500">
+            <p className="text-center md:text-xl  mb-2 text-gray-500">
               <button
                 // onClick={sendPassResetEmail}
                 className="hover:underline underline-offset-1 hover:text-[#9B5A43]"
@@ -62,7 +62,7 @@ const LogIn = () => {
       </div>
 
       <div className="w-full">
-        <img className="md:h-[33rem]" src={matched?.image} alt="" />
+        <img className="md:h-[34rem]" src={matched?.image} alt="" />
       </div>
     </div>
   );
