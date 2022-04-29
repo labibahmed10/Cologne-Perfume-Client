@@ -1,7 +1,11 @@
 import React, { useRef } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 import useBasicImage from "../CUSTOM_HOOK/useBasicImage";
 import SocialSignIn from "../SocialSIgnIn/SocialSignIn";
+import Spinner from "../Spinner/Spinner";
 
 const LogIn = () => {
   const [basicImage] = useBasicImage();
@@ -11,6 +15,9 @@ const LogIn = () => {
   // getting values of inputs
   const emailRef = useRef("");
   const passRef = useRef("");
+
+  // firebase hooks for sign in and reset email..
+  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
   // redirection
   const navigate = useNavigate();
@@ -24,8 +31,23 @@ const LogIn = () => {
     const email = emailRef.current.value;
     const password = passRef.current.value;
 
-    console.log(email, password);
+    if (!email || !password) {
+      toast.warning("Please Fill Up The Form", {
+        autoClose: 2500,
+      });
+    } else {
+      signInWithEmailAndPassword(email, password);
+    }
   };
+
+  if (user) {
+    navigate(from, { replace: true });
+  }
+
+  if (loading) {
+    return <Spinner></Spinner>;
+  }
+
   return (
     <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-6 mt-20">
       <div className="md:w-full">
@@ -67,7 +89,6 @@ const LogIn = () => {
             </p>
             <p className="text-center md:text-xl  mb-2 text-gray-500">
               <button
-                // onClick={sendPassResetEmail}
                 className="hover:underline underline-offset-1 hover:text-[#9B5A43]"
               >
                 Forgot Your Password?
