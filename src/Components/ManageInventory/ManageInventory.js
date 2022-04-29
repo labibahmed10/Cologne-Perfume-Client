@@ -2,8 +2,10 @@ import React from "react";
 import useInventoryItems from "../CUSTOM_HOOK/useInventoryItems";
 import TableRow from "./TableRow";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 const ManageInventory = () => {
   const [products, setProducts] = useInventoryItems();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -42,7 +44,10 @@ const ManageInventory = () => {
 
       {/* add items site */}
       <div className="flex justify-center mb-28">
-        <button className="flex items-center text-gray-600  py-3 px-6 text-2xl font-semibold border border-[#9B5A43] hover:bg-[#9B5A43] hover:text-[aliceblue] duration-300">
+        <button
+          onClick={() => navigate("/addinventory")}
+          className="flex items-center text-gray-600  py-3 px-6 text-2xl font-semibold border border-[#9B5A43] hover:bg-[#9B5A43] hover:text-[aliceblue] duration-300"
+        >
           <AiOutlinePlus></AiOutlinePlus> Add Item
         </button>
       </div>
