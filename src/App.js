@@ -31,7 +31,7 @@ function App() {
         <Route path="/signup" element={<SIgnUp></SIgnUp>}></Route>
       </Routes>
 
-      <ToastContainer></ToastContainer>
+      <ToastContainer theme="dark"></ToastContainer>
     </div>
   );
 }

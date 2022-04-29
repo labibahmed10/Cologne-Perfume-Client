@@ -1,7 +1,11 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 import useBasicImage from "../CUSTOM_HOOK/useBasicImage";
 import SocialSignIn from "../SocialSIgnIn/SocialSignIn";
+import Spinner from "../Spinner/Spinner";
 
 const SIgnUp = () => {
   const [basicImage] = useBasicImage();
@@ -14,15 +18,45 @@ const SIgnUp = () => {
   const passRef = useRef("");
   const conPassRef = useRef("");
 
+  // redirection
+  const navigate = useNavigate();
+
+  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, {
+    sendEmailVerification: true,
+  });
+
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
+
     // getting values of inputs
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const password = passRef.current.value;
     const conPass = conPassRef.current.value;
-    console.log(name, email);
+
+    //condition applied here
+    if (!name || !email || !password || !conPass) {
+      return toast("Please Fill Up The Form", {
+        autoClose: 2000,
+      });
+    }
+    if (password !== conPass) {
+      return toast.error("Password did not matched");
+    } else {
+      createUserWithEmailAndPassword(email, password);
+    }
+
+    //form reseting
+    e.target.reset();
   };
+
+  if (user) {
+    return <Spinner></Spinner>;
+  }
+
+  if (user) {
+    navigate("/");
+  }
 
   return (
     <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-6 mt-20">
