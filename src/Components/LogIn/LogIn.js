@@ -1,5 +1,6 @@
+import { async } from "@firebase/util";
 import React, { useRef } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
@@ -18,7 +19,7 @@ const LogIn = () => {
 
   // firebase hooks for sign in and reset email..
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
-
+  const [sendPasswordResetEmail, sending, Perror] = useSendPasswordResetEmail(auth);
   // redirection
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,9 +45,23 @@ const LogIn = () => {
     navigate(from, { replace: true });
   }
 
-  if (loading) {
+  if (loading || sending) {
     return <Spinner></Spinner>;
   }
+
+  const sendPassResetEmail = async (e) => {
+    const email = emailRef.current.value;
+
+    if (!email) {
+      return toast("Please Input Email", {
+        autoClose: 2500,
+      });
+    }
+    await sendPasswordResetEmail(email);
+    toast("Check Your Email to Reset Password", {
+      autoClose: 2000,
+    });
+  };
 
   return (
     <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-6 mt-20">
@@ -89,6 +104,7 @@ const LogIn = () => {
             </p>
             <p className="text-center md:text-xl  mb-2 text-gray-500">
               <button
+                onClick={sendPassResetEmail}
                 className="hover:underline underline-offset-1 hover:text-[#9B5A43]"
               >
                 Forgot Your Password?
