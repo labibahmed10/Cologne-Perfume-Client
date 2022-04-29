@@ -39,7 +39,7 @@ const HomeBanner = () => {
             <h1 className="text-[#021B29] text-5xl font-semibold">
               Be The Attention <br /> With Our Best Fragrant
             </h1>
-            <button className="mt-8 py-2 px-3 font-semibold border border-[#021B29] hover:bg-[#021B29] text-[aliceblue]">
+            <button className="mt-8 py-2 px-3 font-semibold border border-[#021B29] hover:bg-[#021B29] text-[aliceblue] duration-300">
               Learn More
             </button>
           </div>
@@ -50,7 +50,7 @@ const HomeBanner = () => {
             <h1 className="text-[aliceblue] text-5xl font-semibold">
               Men's Perfume <br /> Extracted From Nature
             </h1>
-            <button className="mt-8 py-2 px-3 font-semibold border border-[#9B5A43] hover:bg-[#9B5A43] text-[aliceblue]">
+            <button className="mt-8 py-2 px-3 font-semibold border border-[#9B5A43] hover:bg-[#9B5A43] text-[aliceblue] duration-300">
               See Collection
             </button>
           </div>

@@ -1,8 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
   console.log(item);
-  const { name, image, description, price, quantity, supplier } = item;
+  const { _id, name, image, description, price, quantity, supplier } = item;
+
+  const navigate = useNavigate();
+
   return (
     <div className="bg-[#EEEEF0] flex items-center px-8 py-5 gap-10 rounded-lg ">
       <div>
@@ -16,7 +20,10 @@ const ProductCard = ({ item }) => {
         <p className="text-xl">Supplier: {supplier}</p>
 
         <div className="flex justify-end items-center mt-8">
-          <button className="px-4 py-2 border-2 border-[#c76f4f] hover:bg-[#c76f4f] hover:text-[aliceblue]">
+          <button
+            onClick={() => navigate(`/inventory/${_id}`)}
+            className="px-4 py-2 border-2 border-[#c76f4f] hover:bg-[#c76f4f] hover:text-[aliceblue] duration-300"
+          >
             Manage
           </button>
         </div>
