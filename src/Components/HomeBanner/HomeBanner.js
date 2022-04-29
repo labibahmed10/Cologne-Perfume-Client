@@ -15,7 +15,6 @@ import { EffectFade, Navigation, Pagination } from "swiper";
 
 const HomeBanner = () => {
   const [basicImage] = useBasicImage();
-  console.log(basicImage);
 
   const bannerImage1 = basicImage.find((item) => item.name === "background-img");
   const bannerImage2 = basicImage.find((item) => item.name === "men-fashion");

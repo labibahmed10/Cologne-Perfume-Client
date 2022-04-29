@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-[#021B29] flex items-center justify-between px-28 py-4">
+    <div className="bg-[#022438] flex items-center justify-between px-28 py-4">
       <div className="w-52 cursor-pointer">
         <img onClick={() => navigate("/home")} src={logo?.image} alt="" />
       </div>
