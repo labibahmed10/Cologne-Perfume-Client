@@ -4,7 +4,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import auth from "../../firebase.init";
 import Spinner from "../Spinner/Spinner";
 
-const RequireAuth = ({ children }) => {
+const RequiredAuth = ({ children }) => {
   const [user, loading] = useAuthState(auth);
   const location = useLocation();
 
@@ -20,4 +20,4 @@ const RequireAuth = ({ children }) => {
   return children;
 };
 
-export default RequireAuth;
+export default RequiredAuth;
