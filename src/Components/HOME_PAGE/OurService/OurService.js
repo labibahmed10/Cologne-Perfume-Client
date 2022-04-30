@@ -21,7 +21,7 @@ const OurService = () => {
       <div className="flex md:flex-row flex-col items-center md:justify-evenly gap-10 text-center text-xl text-[#C76F4F] font-semibold">
         <div>
           <img src={service1?.image} alt="" />
-          <h2 className="py-4">Premim Services</h2>
+          <h2 className="py-4">Premium Services</h2>
         </div>
         <div>
           <img src={service2?.image} alt="" />
