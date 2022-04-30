@@ -3,12 +3,11 @@ import useBasicImage from "../../CUSTOM_HOOK/useBasicImage";
 
 const OurService = () => {
   const [basicImage] = useBasicImage();
-  console.log(basicImage);
   const service1 = basicImage.find((i) => i.name === "service-1");
   const service2 = basicImage.find((i) => i.name === "service-2");
   const service3 = basicImage.find((i) => i.name === "service-3");
   const service4 = basicImage.find((i) => i.name === "service-4");
-  console.log(service1);
+
   return (
     <div className="text-center my-20 py-20 bg-[#EEEEF0]">
       <div className="pb-10">

@@ -14,7 +14,7 @@ const InventoryPart = () => {
       </div>
 
       <div>
-        <div className="grid grid-cols-2 place-items-center gap-10 px-20">
+        <div className="grid md:grid-cols-2 place-items-center gap-10 md:px-20  px-5">
           {products.slice(0, 6).map((item) => (
             <ProductCard item={item} key={item._id}></ProductCard>
           ))}

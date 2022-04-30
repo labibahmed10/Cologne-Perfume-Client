@@ -1,12 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useInventoryItems from "../CUSTOM_HOOK/useInventoryItems";
 import { TiTick } from "react-icons/ti";
+import { async } from "@firebase/util";
+import { toast } from "react-toastify";
 
 const SingleInventory = () => {
   const { pid } = useParams();
   const [products] = useInventoryItems();
   const matched = products.find((item) => item?._id === pid);
+  const [updated, setUpdated] = useState("");
+
+  const deleteQuantity = () => {
+    // fetch(`http://localhost:5000/inventory/${pid}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data));
+  };
+
+  const updateQuantitybyForm = (e) => {
+    e.preventDefault();
+    const quantity = e.target.number.value;
+
+    if (parseInt(quantity) < 0 || !quantity) {
+      return toast("Please put a valid number");
+    }
+    const updated = {
+      ...matched,
+      quantity: parseInt(quantity),
+    };
+
+    fetch(`http://localhost:5000/inventory/${pid}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updated),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data?.acknowledged) {
+          setUpdated(updated);
+        }
+      });
+    e.target.reset();
+  };
 
   return (
     <div className="px-20">
@@ -22,12 +66,15 @@ const SingleInventory = () => {
               <h1 className="text-2xl">Id : {matched?._id}</h1>
               <h2 className="text-2xl py-2">Price : ${matched?.price}</h2>
               <p>Description : {matched?.description}</p>
-              <p className="py-2">Quantity left : {matched?.quantity} pieces</p>
+              <p className="py-2">Quantity left : {updated ? updated?.quantity : matched?.quantity} pieces</p>
 
               <p>Supplier : {matched?.supplier} Brand LTD.</p>
             </div>
             <div className="flex justify-end">
-              <button className="flex items-center px-4 py-2 mt-10 border-2 border-[#9B5A43] hover:text-green-400 duration-300 hover:bg-[#ad6348]">
+              <button
+                onClick={() => deleteQuantity()}
+                className="flex items-center px-4 py-2 mt-10 border-2 border-[#9B5A43] hover:text-green-400 duration-300 hover:bg-[#ad6348]"
+              >
                 <TiTick className="text-2xl "></TiTick> Delivered
               </button>
             </div>
@@ -36,7 +83,7 @@ const SingleInventory = () => {
 
         <div className="border-2 w-1/2 border-[#9B5A43] px-5 h-96 text-gray-600">
           <h1 className="text-center pt-16 text-3xl font-semibold pb-8">Restock the Items</h1>
-          <form action="">
+          <form onSubmit={updateQuantitybyForm}>
             <input
               className="w-full py-2 px-3 focus:outline-none bg-slate-100"
               type="number"
