@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import useInventoryItems from "../CUSTOM_HOOK/useInventoryItems";
-import ProductCard from "../ProductCard/ProductCard";
+import useInventoryItems from "../../CUSTOM_HOOK/useInventoryItems";
+import ProductCard from "../../ProductCard/ProductCard";
 
 const InventoryPart = () => {
   const [products, setProducts] = useInventoryItems();

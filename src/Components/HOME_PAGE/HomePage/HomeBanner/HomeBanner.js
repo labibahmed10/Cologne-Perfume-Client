@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import useBasicImage from "../CUSTOM_HOOK/useBasicImage";
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,7 +10,8 @@ import "swiper/css/pagination";
 import "./HomeBanner.css";
 
 // import required modules
-import { EffectFade, Navigation, Pagination } from "swiper";
+import { EffectFade, Navigation } from "swiper";
+import useBasicImage from "../../../CUSTOM_HOOK/useBasicImage";
 
 const HomeBanner = () => {
   const [basicImage] = useBasicImage();

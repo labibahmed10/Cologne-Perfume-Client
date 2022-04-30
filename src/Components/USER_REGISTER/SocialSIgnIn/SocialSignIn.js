@@ -1,8 +1,8 @@
 import React from "react";
 import { useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
-import auth from "../../firebase.init";
-import Spinner from "../Spinner/Spinner";
+import auth from "../../../firebase.init";
+import Spinner from "../../Spinner/Spinner";
 
 const SocialSignIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
