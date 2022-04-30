@@ -10,6 +10,7 @@ import SIgnUp from "./Components/USER_REGISTER/SignUp/SIgnUp";
 import HomePage from "./Components/HOME_PAGE/HomePage/HomePage";
 import LogIn from "./Components/USER_REGISTER/LogIn/LogIn";
 import Footer from "./Components/Footer/Footer";
+import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/addinventory" element={<AddNewInventory></AddNewInventory>}></Route>
         <Route path="/login" element={<LogIn></LogIn>}></Route>
         <Route path="/signup" element={<SIgnUp></SIgnUp>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer theme="dark"></ToastContainer>

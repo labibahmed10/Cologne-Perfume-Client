@@ -50,7 +50,7 @@ const SIgnUp = () => {
     e.target.reset();
   };
 
-  if (user) {
+  if (loading) {
     return <Spinner></Spinner>;
   }
 

@@ -70,7 +70,6 @@ const LogIn = () => {
           <div>
             <img className="w-52 mx-auto py-5" src={logo?.image} alt="" />
           </div>
-          {/* <h1 className="text-3xl font-semibold mb-10 mt-5">Log In as a Volunteer</h1> */}
           <form action="" onSubmit={handleSubmitSignIn}>
             <input
               ref={emailRef}
@@ -88,7 +87,7 @@ const LogIn = () => {
             />
 
             {/* showed error here */}
-            {/* {error && <p className="text-center text-red-500">{error?.message}</p>} */}
+            {error && <p className="text-center text-red-600">{error?.message}</p>}
 
             <input
               type="submit"

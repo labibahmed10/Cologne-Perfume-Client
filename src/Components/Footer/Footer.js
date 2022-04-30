@@ -5,7 +5,7 @@ const Footer = () => {
   const [basicImage] = useBasicImage();
   const logo = basicImage.find((item) => item?.name === "brand-logo");
   return (
-    <div className="mt-28 md:p-20 px-5 py-10 bg-[#022438]">
+    <div className="mt-28 md:px-20 md:py-10 px-5 py-10 bg-[#022438]">
       <div className="flex justify-between items-center md:flex-row flex-col">
         <img className="w-52" src={logo?.image} alt="" />
         <div className="md:w-1/3 w-full flex items-center space-x-5 mt-10">
@@ -54,6 +54,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <p className="text-center pt-5 text-gray-400">&copy; Copyright 2022 | Cologne by Labib Ahmed </p>
     </div>
   );
 };
