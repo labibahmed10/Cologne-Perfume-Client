@@ -11,6 +11,7 @@ import HomePage from "./Components/HOME_PAGE/HomePage/HomePage";
 import LogIn from "./Components/USER_REGISTER/LogIn/LogIn";
 import Footer from "./Components/Footer/Footer";
 import NotFound from "./Components/NotFound/NotFound";
+import Blogs from "./Components/Blogs/Blogs";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         ></Route>
         <Route path="/inventory" element={<ManageInventory></ManageInventory>}></Route>
         <Route path="/addinventory" element={<AddNewInventory></AddNewInventory>}></Route>
+        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/login" element={<LogIn></LogIn>}></Route>
         <Route path="/signup" element={<SIgnUp></SIgnUp>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
