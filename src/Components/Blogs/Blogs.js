@@ -46,13 +46,30 @@ const Blogs = () => {
           <img className="w-1/2" src="https://miro.medium.com/max/1200/1*uholdYDSjM-a75MVwoY1Zw.png" alt="" />
 
           <p className="text-xl text-justify">
-            SQL or 'Structured Query Language' means data are stored in a relational format like rows and
+            SQL or 'Structured Query Language', means data are stored in a relational format like rows and
             columns.SQL is bascically a programmming language which performs its tasks like update in db or
             retrive data from db.There's lots of differences with NoSQL <br />
-            NoSQL or "Not only Structured" means data are unstructured where data can be stored in multiple
+            NoSQL or "Not only Structured", means data are unstructured where data can be stored in multiple
             collection and there is no need of any fixed table schemas.We can store lots of data without
             structure.Mainting data is quite easy and flexible than SQL as SQL's data may share in different
             servers.
+          </p>
+        </div>
+      </div>
+      <div className="border border-[#9B5A43] p-4 mb-3">
+        <h1 className="text-center py-4 text-3xl font-semibold text-[#c76f4f] md:md-0 mb-3">
+          What is the purpose of jwt and how does it work?
+        </h1>
+        <div className="flex md:flex-row flex-col items-center gap-10 leading-7">
+          <img className="w-1/2" src="http://jwt.io/img/logo-asset.svg" alt="" />
+
+          <p className="text-xl text-justify">
+            JWT or JSON Web Token,is an open standard used to share security information between two parties,
+            a client and a server.Each JWT contains encoded JSON objects,including a set of claims.JWTs are
+            signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token
+            is issued.To authenticate a user,a client application must send a JSON Web Token in the
+            authorization header of the HTTP request to our backend API.API Gateway validates the token on
+            behalf of our API, so we don't have to add any code in our API to process the authentication.
           </p>
         </div>
       </div>
