@@ -1,11 +1,11 @@
 import React from "react";
 import { BiBadgeCheck } from "react-icons/bi";
 import { FaRegHandshake } from "react-icons/fa";
-import { ImLab } from "react-icons/im";
+import { IoIosPersonAdd } from "react-icons/io";
 import { BsFlower1 } from "react-icons/bs";
 const ExperienceSide = () => {
   return (
-    <div className="flex items-center justify-evenly my-20 py-20 bg-[#EEEEF0]">
+    <div className="flex md:flex-row flex-col gap-10 md:gap-0 items-center justify-evenly my-20 py-20 bg-[#EEEEF0]">
       <div className="text-[#C76F4F]">
         <h1 className="text-6xl text-center mx-auto font-semibold  border-b border-[#C76F4F] w-1/2">
           <BiBadgeCheck className="mx-auto"></BiBadgeCheck> 12
@@ -20,7 +20,7 @@ const ExperienceSide = () => {
       </div>
       <div className="text-[#C76F4F]">
         <h1 className="text-6xl text-center mx-auto font-semibold w-1/2 border-b border-[#C76F4F]">
-          <ImLab className="mx-auto w-1/2"></ImLab> 6
+          <IoIosPersonAdd className="mx-auto w-1/2"></IoIosPersonAdd> 6
         </h1>
         <p className="text-xl font-semibold py-2">Qualified Speciaists</p>
       </div>

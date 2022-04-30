@@ -9,6 +9,7 @@ import RequiredAuth from "./Components/USER_REGISTER/RequiredAuth/RequiredAuth";
 import SIgnUp from "./Components/USER_REGISTER/SignUp/SIgnUp";
 import HomePage from "./Components/HOME_PAGE/HomePage/HomePage";
 import LogIn from "./Components/USER_REGISTER/LogIn/LogIn";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
         <Route path="/login" element={<LogIn></LogIn>}></Route>
         <Route path="/signup" element={<SIgnUp></SIgnUp>}></Route>
       </Routes>
-
+      <Footer></Footer>
       <ToastContainer theme="dark"></ToastContainer>
     </div>
   );
