@@ -1,17 +1,58 @@
 import React from "react";
+import { toast } from "react-toastify";
 import useBasicImage from "../CUSTOM_HOOK/useBasicImage";
 
 const AddNewInventory = () => {
   const [basicImage] = useBasicImage();
   const logo = basicImage.find((item) => item.name === "brand-logo");
 
+  const handleAddNewProduct = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const description = e.target.description.value;
+    const image = e.target.image.value;
+    const price = e.target.price.value;
+    const quantity = e.target.quantity.value;
 
+    if (!name || !description || !image || !price || !quantity) {
+      toast("Please fill up every detail", {
+        autoClose: 2000,
+      });
+    }
 
+    if (price <= 0 || quantity <= 0) {
+      toast("Please Input valid number or greater than 0", {
+        autoClose: 2000,
+      });
+    }
 
+    const newProduct = {
+      name,
+      description,
+      image,
+      price: parseInt(price),
+      quantity: parseInt(quantity),
+    };
 
+    fetch("http://localhost:5000/inventory", {
+      method: "POST",
+      body: JSON.stringify(newProduct),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.acknowledged) {
+          toast("The Product was added😃", {
+            autoClose: 2000,
+          });
+        }
+        console.log(data);
+      });
 
-
-  
+    e.target.reset();
+  };
 
   return (
     <div className="mt-20 mx-auto w-[30rem] px-8 border rounded-lg border-[#9B5A43] py-5">
@@ -21,7 +62,7 @@ const AddNewInventory = () => {
       </div>
 
       <div className="mt-12">
-        <form>
+        <form onSubmit={handleAddNewProduct}>
           <input
             className="w-full py-3 mb-3 px-5 focus:outline-none bg-slate-50 rounded-lg"
             type="text"
