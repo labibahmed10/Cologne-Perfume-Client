@@ -21,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/home" element={<HomePage></HomePage>}></Route>
+        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route
           path="/inventory/:pid"
           element={
@@ -29,10 +30,30 @@ function App() {
             </RequiredAuth>
           }
         ></Route>
-        <Route path="/inventory" element={<ManageInventory></ManageInventory>}></Route>
-        <Route path="/addinventory" element={<AddNewInventory></AddNewInventory>}></Route>
-        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
-        <Route path="/myitems" element={<MyItemsPage></MyItemsPage>}></Route>
+        <Route
+          path="/inventory"
+          element={
+            <RequiredAuth>
+              <ManageInventory></ManageInventory>
+            </RequiredAuth>
+          }
+        ></Route>
+        <Route
+          path="/addinventory"
+          element={
+            <RequiredAuth>
+              <AddNewInventory></AddNewInventory>
+            </RequiredAuth>
+          }
+        ></Route>
+        <Route
+          path="/myitems"
+          element={
+            <RequiredAuth>
+              <MyItemsPage></MyItemsPage>
+            </RequiredAuth>
+          }
+        ></Route>
         <Route path="/login" element={<LogIn></LogIn>}></Route>
         <Route path="/signup" element={<SIgnUp></SIgnUp>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>

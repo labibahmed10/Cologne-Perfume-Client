@@ -10,14 +10,13 @@ const Navbar = () => {
   const logo = basicImage.find((item) => item.name === "brand-logo");
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
-  console.log(user);
 
   const handleSignOut = () => {
     signOut(auth);
   };
 
   return (
-    <nav className="relative sticky top-0 z-10 w-full flex flex-wrap items-center justify-between py-4 bg-[#022438] shadow-lg navbar navbar-expand-md navbar-light">
+    <nav className="relative sticky top-0 md:px-28 z-10 w-full flex flex-wrap items-center justify-between py-4 bg-[#022438] shadow-lg navbar navbar-expand-md navbar-light">
       <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
         <button
           className="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5"

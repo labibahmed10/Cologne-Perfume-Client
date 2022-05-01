@@ -14,12 +14,13 @@ const AddNewInventory = () => {
   const handleAddNewProduct = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
+    const email = e.target.email.value;
     const description = e.target.description.value;
     const image = e.target.image.value;
     const price = e.target.price.value;
     const quantity = e.target.quantity.value;
 
-    if (!name || !description || !image || !price || !quantity) {
+    if (!name || !email || !description || !image || !price || !quantity) {
       return toast("Please fill up every detail", {
         autoClose: 2000,
       });
@@ -33,6 +34,7 @@ const AddNewInventory = () => {
 
     const newProduct = {
       name,
+      email,
       description,
       image,
       price: parseInt(price),
@@ -53,7 +55,6 @@ const AddNewInventory = () => {
             autoClose: 2000,
           });
         }
-        console.log(data);
       });
 
     e.target.reset();
@@ -73,6 +74,12 @@ const AddNewInventory = () => {
             type="text"
             name="name"
             placeholder="Name"
+          />
+          <input
+            className="w-full py-3 mb-3 px-5 focus:outline-none bg-slate-50 rounded-lg"
+            type="email"
+            name="email"
+            placeholder="E-mail"
           />
           <input
             className="w-full py-3 mb-3 px-5 focus:outline-none bg-slate-50 rounded-lg"
