@@ -4,6 +4,15 @@ import useBasicImage from "../CUSTOM_HOOK/useBasicImage";
 const AddNewInventory = () => {
   const [basicImage] = useBasicImage();
   const logo = basicImage.find((item) => item.name === "brand-logo");
+
+
+
+
+
+
+
+  
+
   return (
     <div className="mt-20 mx-auto w-[30rem] px-8 border rounded-lg border-[#9B5A43] py-5">
       <div>

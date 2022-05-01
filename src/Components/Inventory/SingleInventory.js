@@ -6,22 +6,17 @@ import { async } from "@firebase/util";
 import { toast } from "react-toastify";
 
 const SingleInventory = () => {
+  //always come top of the page after clicking from other page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { pid } = useParams();
   const [products] = useInventoryItems();
-  const matched = products.find((item) => item?._id === pid);
   const [updated, setUpdated] = useState("");
+  const matched = products.find((item) => item?._id === pid);
 
-  const deleteQuantity = () => {
-    // fetch(`http://localhost:5000/inventory/${pid}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
-  };
+  const deleteQuantity = () => {};
 
   const updateQuantitybyForm = (e) => {
     e.preventDefault();
