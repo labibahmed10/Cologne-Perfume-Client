@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import useBasicImage from "../CUSTOM_HOOK/useBasicImage";
 
 const AddNewInventory = () => {
+  //refresh and get top of the page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [basicImage] = useBasicImage();
   const logo = basicImage.find((item) => item.name === "brand-logo");
 
@@ -15,13 +20,13 @@ const AddNewInventory = () => {
     const quantity = e.target.quantity.value;
 
     if (!name || !description || !image || !price || !quantity) {
-      toast("Please fill up every detail", {
+      return toast("Please fill up every detail", {
         autoClose: 2000,
       });
     }
 
     if (price <= 0 || quantity <= 0) {
-      toast("Please Input valid number or greater than 0", {
+      return toast("Please Input valid number or greater than 0", {
         autoClose: 2000,
       });
     }
@@ -55,10 +60,10 @@ const AddNewInventory = () => {
   };
 
   return (
-    <div className="mt-20 mx-auto w-[30rem] px-8 border rounded-lg border-[#9B5A43] py-5">
+    <div className="mt-28 md:mx-auto mx-5 md:w-[30rem] px-8 py-5 border rounded-lg border-[#9B5A43]">
       <div>
         <img className="h-16 mx-auto" src={logo?.image} alt="" />
-        <p className="text-center text-2xl pt-5">Add Product in collection</p>
+        <p className="text-center text-2xl pt-5 text-[#ad644a]">Add Product in collection</p>
       </div>
 
       <div className="mt-12">
