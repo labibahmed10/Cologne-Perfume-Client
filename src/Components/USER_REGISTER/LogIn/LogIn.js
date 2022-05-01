@@ -64,7 +64,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-6 mt-20">
+    <div className="flex md:flex-row flex-col-reverse items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-6 mt-20">
       <div className="md:w-full">
         <div className="px-16 py-8 border bg-[#EEEEF0] text-[#3D3D3D]">
           <div>

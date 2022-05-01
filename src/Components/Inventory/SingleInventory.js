@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useInventoryItems from "../CUSTOM_HOOK/useInventoryItems";
 import { TiTick } from "react-icons/ti";
 import { async } from "@firebase/util";
@@ -12,6 +12,7 @@ const SingleInventory = () => {
   }, []);
 
   const { pid } = useParams();
+  const navigate = useNavigate();
   const [products] = useInventoryItems();
   const [updated, setUpdated] = useState("");
   const matched = products.find((item) => item?._id === pid);
@@ -49,7 +50,7 @@ const SingleInventory = () => {
 
   return (
     <div className="md:px-28 px-5">
-      <div className="flex md:flex-row flex-col md:justify-between items-center my-20 gap-10">
+      <div className="flex md:flex-row flex-col md:justify-between items-center mt-20 mb-10 gap-10">
         <div className="border-2 p-6 border-[#9B5A43] w-full flex md:flex-row flex-col items-center gap-5 bg-[#EEEEF0]">
           <div className="text-center">
             <img className="md:h-[30rem] h-[25rem] md:w-[30rem]" src={matched?.image} alt="" />
@@ -93,6 +94,14 @@ const SingleInventory = () => {
             />
           </form>
         </div>
+      </div>
+      <div className="text-center">
+        <button
+          onClick={() => navigate("/inventory")}
+          className="py-3 px-5 mt-10 border border-[#9B5A43] font-semibold text-[#C76F4F] hover:bg-[#9B5A43] duration-300 hover:text-[aliceblue] "
+        >
+          Manage Inventory
+        </button>
       </div>
     </div>
   );
