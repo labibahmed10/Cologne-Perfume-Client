@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useInventoryItems from "../CUSTOM_HOOK/useInventoryItems";
 import { TiTick } from "react-icons/ti";
-import { async } from "@firebase/util";
 import { toast } from "react-toastify";
 
 const SingleInventory = () => {
@@ -13,12 +12,43 @@ const SingleInventory = () => {
 
   const { pid } = useParams();
   const navigate = useNavigate();
+
   const [products] = useInventoryItems();
-  const [updated, setUpdated] = useState("");
   const matched = products.find((item) => item?._id === pid);
 
-  const deleteQuantity = () => {};
+  let [updatingProduct, setUpdated] = useState("");
 
+  //setting values of matched in updated
+  useEffect(() => {
+    setUpdated(matched);
+  }, [matched]);
+
+  //deleting single quantity
+  const deleteQuantity = () => {
+    const updatedQuantity = updatingProduct?.quantity - 1;
+
+    updatingProduct = {
+      ...updatingProduct,
+      quantity: updatedQuantity,
+    };
+
+    fetch(`http://localhost:5000/inventory/${pid}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatingProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data?.acknowledged) {
+          setUpdated(updatingProduct);
+        }
+      });
+  };
+
+  //updating quantity by form
   const updateQuantitybyForm = (e) => {
     e.preventDefault();
     const quantity = e.target.number.value;
@@ -26,8 +56,9 @@ const SingleInventory = () => {
     if (parseInt(quantity) < 0 || !quantity) {
       return toast("Please put a valid number");
     }
-    const updated = {
-      ...matched,
+
+    updatingProduct = {
+      ...updatingProduct,
       quantity: parseInt(quantity),
     };
 
@@ -36,13 +67,13 @@ const SingleInventory = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(updated),
+      body: JSON.stringify(updatingProduct),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data?.acknowledged) {
-          setUpdated(updated);
+          setUpdated(updatingProduct);
         }
       });
     e.target.reset();
@@ -53,22 +84,25 @@ const SingleInventory = () => {
       <div className="flex md:flex-row flex-col md:justify-between items-center mt-20 mb-10 gap-10">
         <div className="border-2 p-6 border-[#9B5A43] w-full flex md:flex-row flex-col items-center gap-5 bg-[#EEEEF0]">
           <div className="text-center">
-            <img className="md:h-[30rem] h-[25rem] md:w-[30rem]" src={matched?.image} alt="" />
-            <h1 className="text-4xl font-semibold pt-5 text-[#b96c50]">{matched?.name}</h1>
+            <img className="md:h-[30rem] h-[25rem] md:w-[30rem]" src={updatingProduct?.image} alt="" />
+            <h1 className="text-4xl font-semibold pt-5 text-[#b96c50]">{updatingProduct?.name}</h1>
           </div>
 
           <div className="text-xl font-semibold">
             <div className="text-gray-600">
-              <h1 className="md:text-2xl">Id : {matched?._id}</h1>
-              <h2 className="md:text-2xl py-2">Price : ${matched?.price}</h2>
-              <p>Description : {matched?.description}</p>
-              <p className="py-2">Quantity left : {updated ? updated?.quantity : matched?.quantity} pieces</p>
+              <h1 className="md:text-2xl">Id : {updatingProduct?._id}</h1>
+              <h2 className="md:text-2xl py-2">Price : ${updatingProduct?.price}</h2>
+              <p>Description : {updatingProduct?.description}</p>
+              <p className="py-2">
+                Quantity left : {updatingProduct ? updatingProduct?.quantity : updatingProduct?.quantity}{" "}
+                pieces
+              </p>
 
-              <p>Supplier : {matched?.supplier} Brand LTD.</p>
+              <p>Supplier : {updatingProduct?.supplier} Brand LTD.</p>
             </div>
             <div className="flex justify-end">
               <button
-                onClick={() => deleteQuantity()}
+                onClick={deleteQuantity}
                 className="flex items-center px-4 py-2 mt-10 border-2 border-[#9B5A43] hover:text-green-400 duration-300 hover:bg-[#ad6348]"
               >
                 <TiTick className="text-2xl "></TiTick> Delivered
