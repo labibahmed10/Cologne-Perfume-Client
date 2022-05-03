@@ -8,7 +8,7 @@ const TableRow = ({ item, i, handleDeleteProduct }) => {
   const navigate = useNavigate();
 
   return (
-    <tr className="bg-white border-b">
+    <tr className="bg-white  border-b">
       <td className="px-6 py-4 whitespace-nowrap text-xl font-medium text-gray-600">{i + 1}</td>
       <td className="text-xl text-gray-600 font-light px-6 py-4 whitespace-nowrap">{name}</td>
       <td>
