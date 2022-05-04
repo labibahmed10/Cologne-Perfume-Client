@@ -1,11 +1,12 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const useInventoryItems = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/inventory")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    axios.get("http://localhost:5000/inventory").then((res) => {
+      setProducts(res?.data?.result);
+    });
   }, []);
 
   return [products, setProducts];

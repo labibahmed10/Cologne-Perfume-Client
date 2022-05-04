@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
@@ -14,9 +15,9 @@ const MyItemsPage = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myItems?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setItems(data));
+    axios.get(`http://localhost:5000/myItems?email=${user?.email}`).then((res) => {
+      setItems(res?.data);
+    });
   }, [user]);
 
   const handleDeleteMyItem = (id) => {
@@ -27,21 +28,17 @@ const MyItemsPage = () => {
         autoClose: 2000,
       });
     } else {
-      fetch(`http://localhost:5000/myItems/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data?.acknowledged) {
-            toast("The Item you wants to delete was deleted", {
-              autoClose: 2000,
-            });
-            const remaining = myItems.filter((item) => item._id !== id);
+      //using axios to delete items
+      axios.delete(`http://localhost:5000/myItems/${id}`).then((res) => {
+        if (res?.data?.acknowledged) {
+          toast("The Item you wants to delete was deleted", {
+            autoClose: 2000,
+          });
+          const remaining = myItems.filter((item) => item._id !== id);
 
-            setItems(remaining);
-          }
-        });
+          setItems(remaining);
+        }
+      });
     }
   };
 

@@ -4,6 +4,7 @@ import TableRow from "./TableRow";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const ManageInventory = () => {
   // useEffect(() => {
@@ -14,13 +15,17 @@ const ManageInventory = () => {
   const [products, setProducts] = useState([]);
   const [size, setSize] = useState(10);
   const [page, setPage] = useState(0);
+  const [tPage, setTPage] = useState(0);
 
-  const button = [...Array(Math.ceil(5)).keys()];
+  const button = [...Array(Math.ceil(tPage)).keys()];
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventory?pageNum=${page}&size=${size}`)
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    (async () => {
+      await axios.get(`http://localhost:5000/inventory?pageNum=${page}&size=${size}`).then((res) => {
+        setProducts(res?.data?.result);
+        setTPage(res?.data?.count / size);
+      });
+    })();
   }, [size, page]);
 
   const handleDeleteProduct = (id) => {
@@ -31,21 +36,16 @@ const ManageInventory = () => {
         autoClose: 2000,
       });
     } else {
-      fetch(`http://localhost:5000/deleteItem/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data?.acknowledged) {
-            toast("The Item you wants to delete was deleted", {
-              autoClose: 2000,
-            });
-            const remaining = products.filter((item) => item._id !== id);
-
-            setProducts(remaining);
-          }
-        });
+      //used axios for deleting
+      axios.delete(`http://localhost:5000/deleteItem/${id}`).then((res) => {
+        if (res?.data?.acknowledged) {
+          toast("The Item you wants to delete was deleted", {
+            autoClose: 2000,
+          });
+          const remaining = products.filter((item) => item._id !== id);
+          setProducts(remaining);
+        }
+      });
     }
   };
 
@@ -104,7 +104,8 @@ const ManageInventory = () => {
             {n + 1}
           </button>
         ))}
-        <select className="p-2" onChange={(e) => setSize(e.target.value)}>
+        <select defaultValue={size} className="p-2" onChange={(e) => setSize(e.target.value)}>
+          <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
           <option value="20">20</option>

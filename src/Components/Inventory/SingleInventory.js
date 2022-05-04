@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useInventoryItems from "../CUSTOM_HOOK/useInventoryItems";
 import { TiTick } from "react-icons/ti";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const SingleInventory = () => {
   //always come top of the page after clicking from other page
@@ -27,25 +28,24 @@ const SingleInventory = () => {
   const deleteQuantity = () => {
     const updatedQuantity = updatingProduct?.quantity - 1;
 
+    if (updatedQuantity <= 0) {
+      return toast("Sorry Can't reduce more", {
+        autoClose: 2000,
+      });
+    }
+
     updatingProduct = {
       ...updatingProduct,
       quantity: updatedQuantity,
     };
 
-    fetch(`http://localhost:5000/inventory/${pid}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatingProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data?.acknowledged) {
-          setUpdated(updatingProduct);
-        }
-      });
+    //using axios for updating
+    axios.put(`http://localhost:5000/inventory/${pid}`, updatingProduct).then((res) => {
+      console.log(res);
+      if (res?.data?.acknowledged) {
+        setUpdated(updatingProduct);
+      }
+    });
   };
 
   //updating quantity by form
@@ -62,20 +62,13 @@ const SingleInventory = () => {
       quantity: parseInt(quantity),
     };
 
-    fetch(`http://localhost:5000/inventory/${pid}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatingProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data?.acknowledged) {
-          setUpdated(updatingProduct);
-        }
-      });
+    //using axios for updating
+    axios.put(`http://localhost:5000/inventory/${pid}`, updatingProduct).then((res) => {
+      if (res?.data?.acknowledged) {
+        setUpdated(updatingProduct);
+      }
+    });
+
     e.target.reset();
   };
 

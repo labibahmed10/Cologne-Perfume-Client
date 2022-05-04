@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import useBasicImage from "../CUSTOM_HOOK/useBasicImage";
@@ -41,21 +42,15 @@ const AddNewInventory = () => {
       quantity: parseInt(quantity),
     };
 
-    fetch("http://localhost:5000/inventory", {
-      method: "POST",
-      body: JSON.stringify(newProduct),
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.acknowledged) {
-          toast("The Product was added😃", {
-            autoClose: 2000,
-          });
-        }
-      });
+    //using axios for posting
+    axios.post("http://localhost:5000/inventory", newProduct).then((res) => {
+      console.log(res);
+      if (res?.data?.acknowledged) {
+        toast("The Product was added😃", {
+          autoClose: 2000,
+        });
+      }
+    });
 
     e.target.reset();
   };
