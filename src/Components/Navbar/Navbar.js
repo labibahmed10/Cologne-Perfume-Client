@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <nav className="relative sticky top-0 md:px-28 z-10 w-full flex flex-wrap items-center justify-between py-4 bg-[#022438] shadow-lg navbar navbar-expand-md navbar-light">
-      <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+      <div className="container-fluid w-full flex flex-wrap items-center justify-between md:px-0 px-6">
         <button
           className="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5"
           type="button"

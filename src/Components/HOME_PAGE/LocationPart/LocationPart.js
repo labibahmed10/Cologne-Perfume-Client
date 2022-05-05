@@ -1,16 +1,28 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import useBasicImage from "../../CUSTOM_HOOK/useBasicImage";
+import LocationMap from "./LocationMap";
 
 const LocationPart = () => {
+  //getting brand logo
+  const [basicImage] = useBasicImage();
+  const warehouse = basicImage.find((item) => item.name === "warehouse");
+
   return (
-    <div>
-      <MapContainer className="input-map h-[100vh] w-full" center={[51.505, -0.09]} zoom={13}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[51.505, -0.09]} />
-      </MapContainer>
+    <div className="md:py-20 py-10 bg-[#F3F3F3] md:px-28 px-4">
+      <h1 className="md:text-4xl text-3xl text-center mb-3 font-semibold text-[#9B5A43] ">
+        Find Our Warehouse Locaion From Anywhere
+      </h1>
+
+      <p className="md:text-2xl text-lg text-center mb-10 font-semibold text-[#9B5A43]">
+        We Are Open To Share Our Business
+      </p>
+      <div className="flex md:flex-row flex-col justify-between gap-5 items-center border border-[#9B5A43] p-2">
+        <LocationMap></LocationMap>
+
+        <div>
+          <img className="md:w-full md:h-[30rem] " src={warehouse?.image} alt="" />
+        </div>
+      </div>
     </div>
   );
 };

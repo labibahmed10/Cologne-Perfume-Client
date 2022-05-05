@@ -28,8 +28,8 @@ const SingleInventory = () => {
   const deleteQuantity = () => {
     const updatedQuantity = updatingProduct?.quantity - 1;
 
-    if (updatedQuantity <= 0) {
-      return toast("Sorry Can't reduce more", {
+    if (updatedQuantity < 0) {
+      return toast.warning("The Product Is Sold-Out can't reduce more ", {
         autoClose: 2000,
       });
     }

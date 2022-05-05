@@ -127,7 +127,7 @@ const LogIn = () => {
       </div>
 
       <div className="w-full">
-        <img className="md:h-[34rem]" src={matched?.image} alt="" />
+        <img className="md:h-[34.5rem]" src={matched?.image} alt="" />
       </div>
     </div>
   );
