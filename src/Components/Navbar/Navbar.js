@@ -82,6 +82,20 @@ const Navbar = () => {
                       ? "text-[#be6e51] border border-[#be6e51] px-3 py-1"
                       : "text-[aliceblue] border px-3 py-1"
                   }
+                  to="/addinventory"
+                >
+                  Add Product
+                </NavLink>
+              )}
+            </li>
+            <li className="nav-item ">
+              {user && (
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#be6e51] border border-[#be6e51] px-3 py-1"
+                      : "text-[aliceblue] border px-3 py-1"
+                  }
                   to="/myitems"
                 >
                   My Items

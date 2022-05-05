@@ -7,9 +7,9 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 const ManageInventory = () => {
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);

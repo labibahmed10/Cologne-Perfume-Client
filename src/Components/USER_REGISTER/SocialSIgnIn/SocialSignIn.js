@@ -1,5 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Spinner from "../../Spinner/Spinner";
@@ -8,6 +10,11 @@ const SocialSignIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, Guser, Gloading, Gerror] = useSignInWithGithub(auth);
 
+  // redirection
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
   // if loading
   if (loading || Gloading) {
     return <Spinner></Spinner>;
@@ -15,10 +22,18 @@ const SocialSignIn = () => {
 
   //if user logged in succesfully
   if (user || Guser) {
+    axios
+      .post("http://localhost:5000/createToken", { email: user?.user?.email || Guser?.user?.email })
+      .then((res) => {
+        localStorage.setItem("accessToken", res?.data);
+      });
+
     toast.success(`Log In Succesfull 😃 ${user?.user?.displayName ? user?.user?.displayName : ""}`, {
       position: "top-center",
       autoClose: 2000,
     });
+
+    navigate(from, { replace: true });
   }
 
   //if there any error occurs

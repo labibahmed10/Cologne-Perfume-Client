@@ -32,7 +32,6 @@ const MyItemsPage = () => {
 
   const handleDeleteMyItem = (id) => {
     const confirm = window.confirm("Are you sure wants to delete?");
-
     if (!confirm) {
       toast("Invalid Operation", {
         autoClose: 2000,
