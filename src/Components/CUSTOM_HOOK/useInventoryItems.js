@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 const useInventoryItems = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/inventory").then((res) => {
+    axios.get("https://guarded-earth-03586.herokuapp.com/inventory").then((res) => {
       setProducts(res?.data?.result);
     });
   }, []);

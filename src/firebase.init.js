@@ -6,12 +6,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBYbCE-YqxthF2T_E95ObRLW2xqZR8pgVM",
-  authDomain: "cologne-perfume-auth-6e250.firebaseapp.com",
-  projectId: "cologne-perfume-auth-6e250",
-  storageBucket: "cologne-perfume-auth-6e250.appspot.com",
-  messagingSenderId: "180610178635",
-  appId: "1:180610178635:web:024dea9c9e8cca8a66f7ce",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase

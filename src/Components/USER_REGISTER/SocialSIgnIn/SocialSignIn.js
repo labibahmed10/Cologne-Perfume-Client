@@ -23,7 +23,9 @@ const SocialSignIn = () => {
   //if user logged in succesfully
   if (user || Guser) {
     axios
-      .post("http://localhost:5000/createToken", { email: user?.user?.email || Guser?.user?.email })
+      .post("https://guarded-earth-03586.herokuapp.com/createToken", {
+        email: user?.user?.email || Guser?.user?.email,
+      })
       .then((res) => {
         localStorage.setItem("accessToken", res?.data);
       });

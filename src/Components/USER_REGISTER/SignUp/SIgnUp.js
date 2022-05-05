@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,6 +9,11 @@ import Spinner from "../../Spinner/Spinner";
 import axios from "axios";
 
 const SIgnUp = () => {
+  //refresh and get top of the page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [basicImage] = useBasicImage();
   const matched = basicImage.find((item) => item?.name === "signup-pic");
   const logo = basicImage.find((item) => item?.name === "brand-logo");
@@ -57,20 +62,22 @@ const SIgnUp = () => {
 
   //created jwt for sign up
   if (user) {
-    axios.post("http://localhost:5000/createToken", { email: user?.user?.email }).then((res) => {
-      console.log(res);
-      localStorage.setItem("accessToken", res?.data);
-      navigate("/");
-    });
+    axios
+      .post("https://guarded-earth-03586.herokuapp.com/createToken", { email: user?.user?.email })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("accessToken", res?.data);
+        navigate("/");
+      });
   }
 
   return (
-    <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-6 mt-20">
+    <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-4 mt-20">
       <div className="w-full">
         <img className="md:h-[39.5rem]" src={matched?.image} alt="" />
       </div>
       <div className="md:w-full">
-        <div className="px-16 py-8 border bg-[#EEEEF0] text-[#3D3D3D]">
+        <div className="md:px-16 px-5 py-8 border bg-[#EEEEF0] text-[#3D3D3D]">
           <div>
             <img className="w-52 mx-auto py-5" src={logo?.image} alt="" />
           </div>
@@ -119,7 +126,7 @@ const SIgnUp = () => {
                 Login
               </Link>
             </p>
-            
+
             <SocialSignIn></SocialSignIn>
           </form>
         </div>

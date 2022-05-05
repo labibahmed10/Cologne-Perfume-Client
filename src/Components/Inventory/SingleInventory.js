@@ -40,7 +40,7 @@ const SingleInventory = () => {
     };
 
     //using axios for updating
-    axios.put(`http://localhost:5000/inventory/${pid}`, updatingProduct).then((res) => {
+    axios.put(`https://guarded-earth-03586.herokuapp.com/inventory/${pid}`, updatingProduct).then((res) => {
       console.log(res);
       if (res?.data?.acknowledged) {
         setUpdated(updatingProduct);
@@ -63,7 +63,7 @@ const SingleInventory = () => {
     };
 
     //using axios for updating
-    axios.put(`http://localhost:5000/inventory/${pid}`, updatingProduct).then((res) => {
+    axios.put(`https://guarded-earth-03586.herokuapp.com/inventory/${pid}`, updatingProduct).then((res) => {
       if (res?.data?.acknowledged) {
         setUpdated(updatingProduct);
       }

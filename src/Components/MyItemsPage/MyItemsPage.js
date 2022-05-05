@@ -16,7 +16,7 @@ const MyItemsPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/myItems?email=${user?.email}`, {
+      .get(`https://guarded-earth-03586.herokuapp.com/myItems?email=${user?.email}`, {
         headers: {
           authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
         },
@@ -38,7 +38,7 @@ const MyItemsPage = () => {
       });
     } else {
       //using axios to delete items
-      axios.delete(`http://localhost:5000/myItems/${id}`).then((res) => {
+      axios.delete(`https://guarded-earth-03586.herokuapp.com/myItems/${id}`).then((res) => {
         if (res?.data?.acknowledged) {
           toast("The Item you wants to delete was deleted", {
             autoClose: 2000,
@@ -51,7 +51,7 @@ const MyItemsPage = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 px-20 gap-10 mt-28">
+    <div className="grid md:grid-cols-2 md:px-20 px-4 gap-10 md:mt-28 mt-16">
       {myItems.map((item) => (
         <MyItemCard key={item._id} item={item} handleDeleteMyItem={handleDeleteMyItem}></MyItemCard>
       ))}

@@ -5,7 +5,7 @@ const useBasicImage = () => {
   const [basicImage, setBasicImage] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/basicImages").then((res) => {
+    axios.get("https://guarded-earth-03586.herokuapp.com/basicImages").then((res) => {
       setBasicImage(res?.data);
     });
   }, []);

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Blogs = () => {
+  //refresh and get top of the page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="md:px-28 px-5 md:my-20 my-10">
       <div className="border border-[#9B5A43] p-4 mb-3">

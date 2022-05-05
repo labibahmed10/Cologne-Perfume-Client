@@ -50,7 +50,7 @@ const AddNewInventory = () => {
 
     //using axios for posting
     axios
-      .post("http://localhost:5000/inventory", newProduct, {
+      .post("https://guarded-earth-03586.herokuapp.com/inventory", newProduct, {
         headers: {
           authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
         },
@@ -71,13 +71,13 @@ const AddNewInventory = () => {
   };
 
   return (
-    <div className="mt-28 md:mx-auto mx-5 md:w-[30rem] px-8 py-5 border rounded-lg border-[#9B5A43]">
+    <div className="mt-28 md:mx-auto mx-5 md:w-[30rem] md:px-8 px-3 py-5 border rounded-lg border-[#9B5A43]">
       <div>
         <img className="h-16 mx-auto" src={logo?.image} alt="" />
         <p className="text-center text-2xl pt-5 text-[#ad644a]">Add Product in collection</p>
       </div>
 
-      <div className="mt-12">
+      <div className="md:mt-12 mt-8">
         <form onSubmit={handleAddNewProduct}>
           <input
             className="w-full py-3 mb-3 px-5 focus:outline-none bg-slate-50 rounded-lg"

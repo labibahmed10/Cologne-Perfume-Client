@@ -77,25 +77,17 @@ const Navbar = () => {
             <li className="nav-item ">
               {user && (
                 <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-[#be6e51] border border-[#be6e51] px-3 py-1"
-                      : "text-[aliceblue] border px-3 py-1"
-                  }
+                  className={({ isActive }) => (isActive ? "text-[#be6e51] " : "text-[aliceblue] ")}
                   to="/addinventory"
                 >
-                  Add Product
+                  Add Items
                 </NavLink>
               )}
             </li>
             <li className="nav-item ">
               {user && (
                 <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-[#be6e51] border border-[#be6e51] px-3 py-1"
-                      : "text-[aliceblue] border px-3 py-1"
-                  }
+                  className={({ isActive }) => (isActive ? "text-[#be6e51] " : "text-[aliceblue] ")}
                   to="/myitems"
                 >
                   My Items

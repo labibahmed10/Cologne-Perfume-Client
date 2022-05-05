@@ -7,9 +7,10 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 const ManageInventory = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
@@ -21,10 +22,12 @@ const ManageInventory = () => {
 
   useEffect(() => {
     (async () => {
-      await axios.get(`http://localhost:5000/inventory?pageNum=${page}&size=${size}`).then((res) => {
-        setProducts(res?.data?.result);
-        setTPage(res?.data?.count / size);
-      });
+      await axios
+        .get(`https://guarded-earth-03586.herokuapp.com/inventory?pageNum=${page}&size=${size}`)
+        .then((res) => {
+          setProducts(res?.data?.result);
+          setTPage(res?.data?.count / size);
+        });
     })();
   }, [size, page]);
 
@@ -37,7 +40,7 @@ const ManageInventory = () => {
       });
     } else {
       //used axios for deleting
-      axios.delete(`http://localhost:5000/deleteItem/${id}`).then((res) => {
+      axios.delete(`https://guarded-earth-03586.herokuapp.com/deleteItem/${id}`).then((res) => {
         if (res?.data?.acknowledged) {
           toast("The Item you wants to delete was deleted", {
             autoClose: 2000,
@@ -92,7 +95,7 @@ const ManageInventory = () => {
         </div>
       </div>
 
-      <div className="flex items-center space-x-5 justify-center my-5">
+      <div className="flex items-center md:space-x-5 space-x-3 justify-center my-8">
         {button.map((n, i) => (
           <button
             onClick={() => setPage(n)}
@@ -116,7 +119,7 @@ const ManageInventory = () => {
       <div className="flex justify-center mb-28">
         <button
           onClick={() => navigate("/addinventory")}
-          className="flex items-center text-gray-600  py-3 px-6 text-2xl font-semibold border border-[#9B5A43] hover:bg-[#9B5A43] hover:text-[aliceblue] duration-300"
+          className="flex items-center text-gray-600  md:py-3 py-2 md:px-6 px-4 md:text-2xl text-lg font-semibold border border-[#9B5A43] hover:bg-[#9B5A43] hover:text-[aliceblue] duration-300"
         >
           <AiOutlinePlus></AiOutlinePlus> Add Product
         </button>
