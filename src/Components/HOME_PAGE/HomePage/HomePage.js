@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ExperienceSide from "../ExperienceSide/ExperienceSide";
 import InventoryPart from "../InventoryPart/InventoryPart";
+import LocationPart from "../LocationPart/LocationPart";
 import OurService from "../OurService/OurService";
 import HomeBanner from "./HomeBanner/HomeBanner";
 
@@ -15,6 +16,7 @@ const HomePage = () => {
       <InventoryPart></InventoryPart>
       <OurService></OurService>
       <ExperienceSide></ExperienceSide>
+      <LocationPart></LocationPart>
     </div>
   );
 };
