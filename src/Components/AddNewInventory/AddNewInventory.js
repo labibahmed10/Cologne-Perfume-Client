@@ -56,7 +56,6 @@ const AddNewInventory = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         if (res?.data?.acknowledged) {
           toast("The Product was added😃", {
             autoClose: 2000,

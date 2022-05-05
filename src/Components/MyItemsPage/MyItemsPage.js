@@ -11,13 +11,23 @@ const MyItemsPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [myItems, setItems] = useState([]);
   const [user] = useAuthState(auth);
+  const [myItems, setItems] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/myItems?email=${user?.email}`).then((res) => {
-      setItems(res?.data);
-    });
+    axios
+      .get(`http://localhost:5000/myItems?email=${user?.email}`, {
+        headers: {
+          authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        if (!res?.data?.success) {
+          toast.error(`${res?.data?.message}`, { autoClose: 2000 });
+        } else {
+          setItems(res?.data?.result);
+        }
+      });
   }, [user]);
 
   const handleDeleteMyItem = (id) => {

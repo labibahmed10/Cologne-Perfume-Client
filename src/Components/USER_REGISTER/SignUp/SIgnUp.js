@@ -119,6 +119,7 @@ const SIgnUp = () => {
                 Login
               </Link>
             </p>
+            
             <SocialSignIn></SocialSignIn>
           </form>
         </div>
