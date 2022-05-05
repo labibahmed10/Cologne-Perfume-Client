@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 import useBasicImage from "../CUSTOM_HOOK/useBasicImage";
 
 const AddNewInventory = () => {
@@ -9,8 +11,12 @@ const AddNewInventory = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  //getting brand logo
   const [basicImage] = useBasicImage();
   const logo = basicImage.find((item) => item.name === "brand-logo");
+
+  //getting user for sending token to backend
+  const [user] = useAuthState(auth);
 
   const handleAddNewProduct = (e) => {
     e.preventDefault();
@@ -43,14 +49,24 @@ const AddNewInventory = () => {
     };
 
     //using axios for posting
-    axios.post("http://localhost:5000/inventory", newProduct).then((res) => {
-      console.log(res);
-      if (res?.data?.acknowledged) {
-        toast("The Product was added😃", {
-          autoClose: 2000,
-        });
-      }
-    });
+    axios
+      .post("http://localhost:5000/inventory", newProduct, {
+        headers: {
+          authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res?.data?.acknowledged) {
+          toast("The Product was added😃", {
+            autoClose: 2000,
+          });
+        } else {
+          toast.error(`${res?.data?.message}`, {
+            autoClose: 2000,
+          });
+        }
+      });
 
     e.target.reset();
   };

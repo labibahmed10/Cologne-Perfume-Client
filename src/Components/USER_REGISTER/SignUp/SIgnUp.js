@@ -6,6 +6,7 @@ import auth from "../../../firebase.init";
 import useBasicImage from "../../CUSTOM_HOOK/useBasicImage";
 import SocialSignIn from "../SocialSIgnIn/SocialSignIn";
 import Spinner from "../../Spinner/Spinner";
+import axios from "axios";
 
 const SIgnUp = () => {
   const [basicImage] = useBasicImage();
@@ -54,8 +55,13 @@ const SIgnUp = () => {
     return <Spinner></Spinner>;
   }
 
+  //created jwt for sign up
   if (user) {
-    navigate("/");
+    axios.post("http://localhost:5000/createToken", { email: user?.user?.email }).then((res) => {
+      console.log(res);
+      localStorage.setItem("accessToken", res?.data);
+      navigate("/");
+    });
   }
 
   return (
@@ -68,7 +74,7 @@ const SIgnUp = () => {
           <div>
             <img className="w-52 mx-auto py-5" src={logo?.image} alt="" />
           </div>
-          {/* <h1 className="text-3xl font-semibold mb-10 mt-5">Log In as a Volunteer</h1> */}
+
           <form action="" onSubmit={handleSubmitSignUp}>
             <input
               ref={nameRef}
@@ -100,21 +106,19 @@ const SIgnUp = () => {
             />
 
             {/* showed error here */}
-            {/* {error && <p className="text-center text-red-500">{error?.message}</p>} */}
+            {error && <p className="text-center text-red-500">{error?.message}</p>}
 
             <input
               type="submit"
               value="Login"
               className="w-full my-3 py-3 bg-[#9B5A43] text-lg font-semibold text-[aliceblue] cursor-pointer"
             />
-
             <p className="text-center text-xl">
               Already have an account?{" "}
               <Link className="text-[#9B5A43] hover:underline  underline-offset-1" to="/login">
                 Login
               </Link>
             </p>
-
             <SocialSignIn></SocialSignIn>
           </form>
         </div>

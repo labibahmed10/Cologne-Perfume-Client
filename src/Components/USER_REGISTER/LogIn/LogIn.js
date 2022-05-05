@@ -7,6 +7,7 @@ import auth from "../../../firebase.init";
 import useBasicImage from "../../CUSTOM_HOOK/useBasicImage";
 import SocialSignIn from "../SocialSIgnIn/SocialSignIn";
 import Spinner from "../../Spinner/Spinner";
+import axios from "axios";
 
 const LogIn = () => {
   const [basicImage] = useBasicImage();
@@ -20,6 +21,7 @@ const LogIn = () => {
   // firebase hooks for sign in and reset email..
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, Perror] = useSendPasswordResetEmail(auth);
+
   // redirection
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,8 +43,12 @@ const LogIn = () => {
     }
   };
 
+  //created jwt for login
   if (user) {
-    navigate(from, { replace: true });
+    axios.post("http://localhost:5000/createToken", { email: user?.user?.email }).then((res) => {
+      localStorage.setItem("accessToken", res?.data);
+      navigate(from, { replace: true });
+    });
   }
 
   if (loading || sending) {

@@ -35,7 +35,6 @@ const MyItemsPage = () => {
             autoClose: 2000,
           });
           const remaining = myItems.filter((item) => item._id !== id);
-
           setItems(remaining);
         }
       });
