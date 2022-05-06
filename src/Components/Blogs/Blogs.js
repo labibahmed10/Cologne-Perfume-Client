@@ -6,18 +6,18 @@ const Blogs = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="md:px-28 px-5 md:my-20 my-10">
+    <div style={{ overflowX: "hidden" }} className="md:px-28 px-5 md:my-20 my-10">
       <div className="border border-[#ad6449] p-4 mb-3">
         <h1 className="text-center py-4 text-3xl font-semibold text-[#c76f4f] md:md-0 mb-3">
           Difference between Javascript and NodeJs!
         </h1>
-        <div className="flex md:flex-row flex-col items-center gap-10 leading-7">
+        <div className="flex  md:flex-row flex-col items-center gap-10 leading-7">
           <img
             data-aos="fade-right"
             data-aos-duration="500"
             data-aos-easing="ease-in-out"
             data-aos-once="false"
-            className="w-1/2"
+            className="w-1/2 "
             src="https://i.morioh.com/2021/08/30/4d4f4083.webp"
             alt=""
           />

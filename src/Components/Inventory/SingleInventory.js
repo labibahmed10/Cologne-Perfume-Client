@@ -41,7 +41,6 @@ const SingleInventory = () => {
 
     //using axios for updating
     axios.put(`https://guarded-earth-03586.herokuapp.com/inventory/${pid}`, updatingProduct).then((res) => {
-      console.log(res);
       if (res?.data?.acknowledged) {
         setUpdated(updatingProduct);
       }
@@ -73,9 +72,15 @@ const SingleInventory = () => {
   };
 
   return (
-    <div className="md:px-28 px-5">
+    <div style={{ overflowX: "hidden" }} className="md:px-28 px-5">
       <div className="flex md:flex-row flex-col md:justify-between items-center mt-20 mb-10 gap-10">
-        <div className="border-2 p-6 border-[#ad6449] w-full flex md:flex-row flex-col items-center gap-5 bg-[#EEEEF0]">
+        <div
+          data-aos="fade-right"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
+          className="border-2 p-6 border-[#ad6449] w-full flex md:flex-row flex-col items-center gap-5 bg-[#EEEEF0]"
+        >
           <div className="text-center">
             <img className="md:h-[30rem] h-[25rem] md:w-[30rem]" src={updatingProduct?.image} alt="" />
             <h1 className="text-4xl font-semibold pt-5 text-[#b96c50]">{updatingProduct?.name}</h1>
@@ -104,7 +109,13 @@ const SingleInventory = () => {
           </div>
         </div>
 
-        <div className="border-2 md:w-1/2 w-full border-[#ad6449] px-5 h-96 text-gray-600">
+        <div
+          data-aos="fade-left"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
+          className="border-2 md:w-1/2 w-full border-[#ad6449] px-5 h-96 text-gray-600"
+        >
           <h1 className="text-center pt-16 text-3xl font-semibold pb-8">Restock the Items</h1>
           <form onSubmit={updateQuantitybyForm}>
             <input

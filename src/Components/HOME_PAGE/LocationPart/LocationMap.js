@@ -3,7 +3,13 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
 const LocationMap = () => {
   return (
-    <div data-aos="fade-left" data-aos-duration="500" data-aos-easing="ease-in-out" data-aos-once="false">
+    <div
+      style={{ overflowX: "hidden" }}
+      data-aos="fade-left"
+      data-aos-duration="500"
+      data-aos-easing="ease-in-out"
+      data-aos-once="false"
+    >
       <MapContainer
         className="input-map md:h-[30rem] h-[20rem] md:w-[45vw] w-[85vw] z-0"
         center={[23.810331, 90.412521]}

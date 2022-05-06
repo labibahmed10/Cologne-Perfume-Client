@@ -49,7 +49,7 @@ const Navbar = () => {
         </div>
 
         <div className="collapse navbar-collapse items-center" id="navbarSupportedContent">
-          <ul className="navbar-nav flex md:items-center gap-2 md:gap-5 flex-col pl-1 pt-2  md:pt-0 text-xl">
+          <ul className="navbar-nav flex md:items-center gap-3 md:gap-5 flex-col pl-1 pt-2  pb-1 md:pt-0 text-xl">
             <li className="nav-item">
               <NavLink
                 className={({ isActive }) => (isActive ? "text-[#be6e51]" : "text-[aliceblue]")}

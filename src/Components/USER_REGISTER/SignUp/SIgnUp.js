@@ -65,14 +65,16 @@ const SIgnUp = () => {
     axios
       .post("https://guarded-earth-03586.herokuapp.com/createToken", { email: user?.user?.email })
       .then((res) => {
-        console.log(res);
         localStorage.setItem("accessToken", res?.data);
         navigate("/");
       });
   }
 
   return (
-    <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-4 mt-20">
+    <div
+      style={{ overflowX: "hidden" }}
+      className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-4 mt-20"
+    >
       <div
         data-aos="fade-right"
         data-aos-duration="1500"
