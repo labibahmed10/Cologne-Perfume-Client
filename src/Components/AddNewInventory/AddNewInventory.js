@@ -26,8 +26,9 @@ const AddNewInventory = () => {
     const image = e.target.image.value;
     const price = e.target.price.value;
     const quantity = e.target.quantity.value;
+    const supplier = e.target.supplier.value;
 
-    if (!name || !email || !description || !image || !price || !quantity) {
+    if (!name || !email || !description || !image || !price || !quantity || !supplier) {
       return toast("Please fill up every detail", {
         autoClose: 2000,
       });
@@ -46,6 +47,7 @@ const AddNewInventory = () => {
       image,
       price: parseInt(price),
       quantity: parseInt(quantity),
+      supplier,
     };
 
     //using axios for posting
@@ -111,9 +113,15 @@ const AddNewInventory = () => {
           />
           <input
             className="w-full py-3 mb-3 px-5 focus:outline-none bg-slate-50 rounded-lg"
-            type="quantity"
+            type="number"
             name="quantity"
             placeholder="Quantity"
+          />
+          <input
+            className="w-full py-3 mb-3 px-5 focus:outline-none bg-slate-50 rounded-lg"
+            type="text"
+            name="supplier"
+            placeholder="Supplier"
           />
           <input
             className="w-full py-3 mb-3 text-[#ad6449] bg-slate-50 rounded-lg cursor-pointer font-semibold text-xl"
