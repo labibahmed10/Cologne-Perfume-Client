@@ -14,7 +14,12 @@ import NotFound from "./Components/NotFound/NotFound";
 import Blogs from "./Components/Blogs/Blogs";
 import MyItemsPage from "./Components/MyItemsPage/MyItemsPage";
 
+//AOS animation
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function App() {
+  AOS.init();
   return (
     <div>
       <Navbar></Navbar>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useInventoryItems from "../CUSTOM_HOOK/useInventoryItems";
 import TableRow from "./TableRow";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +7,9 @@ import axios from "axios";
 import SalesInfo from "./SalesInfo";
 
 const ManageInventory = () => {
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const navigate = useNavigate();
 

@@ -19,7 +19,12 @@ const LocationPart = () => {
       <div className="flex md:flex-row flex-col justify-between gap-5 items-center border border-[#ad6449] p-2">
         <LocationMap></LocationMap>
 
-        <div>
+        <div
+          data-aos="fade-right"
+          data-aos-duration="500"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
+        >
           <img className="md:w-full md:h-[30rem] " src={warehouse?.image} alt="" />
         </div>
       </div>

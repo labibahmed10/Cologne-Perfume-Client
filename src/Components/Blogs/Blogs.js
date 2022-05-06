@@ -12,9 +12,23 @@ const Blogs = () => {
           Difference between Javascript and NodeJs!
         </h1>
         <div className="flex md:flex-row flex-col items-center gap-10 leading-7">
-          <img className="w-1/2" src="https://i.morioh.com/2021/08/30/4d4f4083.webp" alt="" />
+          <img
+            data-aos="fade-right"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="w-1/2"
+            src="https://i.morioh.com/2021/08/30/4d4f4083.webp"
+            alt=""
+          />
 
-          <p className="text-xl text-justify">
+          <p
+            data-aos="fade-left"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="text-xl text-justify"
+          >
             Javascript is a programming language where we srite scripts on a site that makes it more
             dynamic,on the other hand NodeJs is a javascript runtime environment that lets a user run js in
             server side as well.We can run javascript for browser only but NodeJs helps us to create softwares
@@ -29,9 +43,23 @@ const Blogs = () => {
           When should you use NodeJS and when should you use MongoDB?
         </h1>
         <div className="flex md:flex-row flex-col items-center gap-10 leading-7">
-          <img className="w-1/2" src="https://miro.medium.com/max/720/1*ay9nx1XdZ3AOzx5Ev8xJEg.png" alt="" />
+          <img
+            data-aos="fade-right"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="w-1/2"
+            src="https://miro.medium.com/max/720/1*ay9nx1XdZ3AOzx5Ev8xJEg.png"
+            alt=""
+          />
 
-          <p className="text-xl text-justify">
+          <p
+            data-aos="fade-left"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="text-xl text-justify"
+          >
             If we are considering making a large application like real-time applications,online gaming
             apps,video conferencing apps or E-commerce transiction software then NodeJs is perfect for making
             these.As we know NodeJs is good for highly extensible,data intensive application and it's
@@ -47,9 +75,23 @@ const Blogs = () => {
           Differences between SQL and NoSQL databases!
         </h1>
         <div className="flex md:flex-row flex-col items-center gap-10 leading-7">
-          <img className="w-1/2" src="https://miro.medium.com/max/1200/1*uholdYDSjM-a75MVwoY1Zw.png" alt="" />
+          <img
+            data-aos="fade-right"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="w-1/2"
+            src="https://miro.medium.com/max/1200/1*uholdYDSjM-a75MVwoY1Zw.png"
+            alt=""
+          />
 
-          <p className="text-xl text-justify">
+          <p
+            data-aos="fade-left"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="text-xl text-justify"
+          >
             SQL or 'Structured Query Language', means data are stored in a relational format like rows and
             columns.SQL is bascically a programmming language which performs its tasks like update in db or
             retrive data from db.There's lots of differences with NoSQL <br />
@@ -65,9 +107,23 @@ const Blogs = () => {
           What is the purpose of jwt and how does it work?
         </h1>
         <div className="flex md:flex-row flex-col items-center gap-10 leading-7">
-          <img className="w-1/2" src="http://jwt.io/img/logo-asset.svg" alt="" />
+          <img
+            data-aos="fade-right"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="w-1/2"
+            src="http://jwt.io/img/logo-asset.svg"
+            alt=""
+          />
 
-          <p className="text-xl text-justify">
+          <p
+            data-aos="fade-left"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="text-xl text-justify"
+          >
             JWT or JSON Web Token,is an open standard used to share security information between two parties,
             a client and a server.Each JWT contains encoded JSON objects,including a set of claims.JWTs are
             signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token

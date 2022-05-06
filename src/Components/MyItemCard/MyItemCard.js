@@ -3,7 +3,7 @@ import React from "react";
 const MyItemCard = ({ item, handleDeleteMyItem }) => {
   const { _id, name, image, description, price, quantity, supplier } = item;
   return (
-    <div>
+    <div data-aos="fade-down" data-aos-duration="500" data-aos-easing="ease-in-out" data-aos-once="false">
       <div className="bg-[#EEEEF0] border border-[#c76f4f] flex md:flex-row flex-col items-center md:px-8 px-4 py-5 md:gap-10 gap-5 rounded-lg h-full">
         <div>
           <img className="w-96 md:h-80 h-[30rem]" src={image} alt="" />

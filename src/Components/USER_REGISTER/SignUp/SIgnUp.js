@@ -73,10 +73,22 @@ const SIgnUp = () => {
 
   return (
     <div className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-4 mt-20">
-      <div className="w-full">
+      <div
+        data-aos="fade-right"
+        data-aos-duration="1500"
+        data-aos-easing="ease-in-out"
+        data-aos-once="false"
+        className="w-full"
+      >
         <img className="md:h-[39.5rem]" src={matched?.image} alt="" />
       </div>
-      <div className="md:w-full">
+      <div
+        data-aos="fade-left"
+        data-aos-duration="1500"
+        data-aos-easing="ease-in-out"
+        data-aos-once="false"
+        className="md:w-full"
+      >
         <div className="md:px-16 px-5 py-8 border bg-[#EEEEF0] text-[#3D3D3D]">
           <div>
             <img className="w-52 mx-auto py-5" src={logo?.image} alt="" />

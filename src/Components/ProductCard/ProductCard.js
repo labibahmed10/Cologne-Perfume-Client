@@ -7,7 +7,14 @@ const ProductCard = ({ item }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-[#EEEEF0] border border-[#c76f4f] flex md:flex-row flex-col items-center md:px-8 px-5 py-5 gap-10 rounded-lg h-full ">
+    <div
+      className="bg-[#EEEEF0] border border-[#c76f4f] flex md:flex-row flex-col items-center md:px-8 px-5 py-5 gap-10 rounded-lg h-full"
+      data-aos="fade-up"
+      data-aos-duration="600"
+      data-aos-easing="ease-in-out"
+      data-aos-once="false"
+      data-aos-anchor-placement="top-center"
+    >
       <div>
         <img className="w-96 md:h-80 h-[30rem]" src={image} alt="" />
         <h1 className="text-3xl font-semibold py-3 text-[#c76f4f] text-center">{name}</h1>

@@ -18,19 +18,34 @@ const OurService = () => {
       </div>
 
       <div className="flex md:flex-row flex-col items-center md:justify-evenly gap-10 text-center text-xl text-[#C76F4F] font-semibold">
-        <div>
+        <div
+          data-aos="fade-left"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
+        >
           <img src={service1?.image} alt="" />
           <h2 className="py-4">Premium Services</h2>
         </div>
-        <div>
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
+        >
           <img src={service2?.image} alt="" />
           <h2 className="py-4">Express Services</h2>
         </div>
-        <div>
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-once="false">
           <img src={service3?.image} alt="" />
           <h2 className="py-4">Cargo Services</h2>
         </div>
-        <div>
+        <div
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
+        >
           <img src={service4?.image} alt="" />
           <h2 className="py-4">Courier Services</h2>
         </div>
