@@ -16,7 +16,7 @@ const NotFound = () => {
 
       <button
         onClick={() => navigate("/home")}
-        className="flex items-center px-6 mt-5 py-3 border border-[#9B5A43] hover:bg-[#9B5A43] duration-300 hover:text-[aliceblue]"
+        className="flex items-center px-6 mt-5 py-3 border border-[#ad6449] hover:bg-[#ad6449] duration-300 hover:text-[aliceblue]"
       >
         <FaHome className="mr-2 text-2xl"></FaHome> Back to Home
       </button>

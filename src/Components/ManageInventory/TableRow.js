@@ -19,11 +19,11 @@ const TableRow = ({ item, i, handleDeleteProduct }) => {
       <td className="text-3xl text-gray-600 font-light px-6 py-4 whitespace-nowrap flex space-x-10">
         <FaEdit
           onClick={() => navigate(`/inventory/${_id}`)}
-          className="cursor-pointer hover:text-[#9B5A43]"
+          className="cursor-pointer hover:text-[#ad6449]"
         ></FaEdit>
         <BsTrash
           onClick={() => handleDeleteProduct(_id)}
-          className="cursor-pointer hover:text-[#9B5A43]"
+          className="cursor-pointer hover:text-[#ad6449]"
         ></BsTrash>
       </td>
     </tr>

@@ -75,7 +75,7 @@ const SingleInventory = () => {
   return (
     <div className="md:px-28 px-5">
       <div className="flex md:flex-row flex-col md:justify-between items-center mt-20 mb-10 gap-10">
-        <div className="border-2 p-6 border-[#9B5A43] w-full flex md:flex-row flex-col items-center gap-5 bg-[#EEEEF0]">
+        <div className="border-2 p-6 border-[#ad6449] w-full flex md:flex-row flex-col items-center gap-5 bg-[#EEEEF0]">
           <div className="text-center">
             <img className="md:h-[30rem] h-[25rem] md:w-[30rem]" src={updatingProduct?.image} alt="" />
             <h1 className="text-4xl font-semibold pt-5 text-[#b96c50]">{updatingProduct?.name}</h1>
@@ -96,7 +96,7 @@ const SingleInventory = () => {
             <div className="flex justify-end">
               <button
                 onClick={deleteQuantity}
-                className="flex items-center px-4 py-2 mt-10 border-2 border-[#9B5A43] hover:text-green-400 duration-300 hover:bg-[#ad6348]"
+                className="flex items-center px-4 py-2 mt-10 border-2 border-[#ad6449] hover:text-green-400 duration-300 hover:bg-[#ad6348]"
               >
                 <TiTick className="text-2xl "></TiTick> Delivered
               </button>
@@ -104,7 +104,7 @@ const SingleInventory = () => {
           </div>
         </div>
 
-        <div className="border-2 md:w-1/2 w-full border-[#9B5A43] px-5 h-96 text-gray-600">
+        <div className="border-2 md:w-1/2 w-full border-[#ad6449] px-5 h-96 text-gray-600">
           <h1 className="text-center pt-16 text-3xl font-semibold pb-8">Restock the Items</h1>
           <form onSubmit={updateQuantitybyForm}>
             <input
@@ -115,7 +115,7 @@ const SingleInventory = () => {
             />
 
             <input
-              className="w-full mt-4 py-2 cursor-pointer bg-[#9B5A43] text-[aliceblue] font-semibold"
+              className="w-full mt-4 py-2 cursor-pointer bg-[#ad6449] text-[aliceblue] font-semibold"
               type="submit"
               value="Restock"
             />
@@ -125,7 +125,7 @@ const SingleInventory = () => {
       <div className="text-center">
         <button
           onClick={() => navigate("/inventory")}
-          className="py-3 px-5 mt-10 border border-[#9B5A43] font-semibold text-[#C76F4F] hover:bg-[#9B5A43] duration-300 hover:text-[aliceblue] "
+          className="py-3 px-5 mt-10 border border-[#ad6449] font-semibold text-[#C76F4F] hover:bg-[#ad6449] duration-300 hover:text-[aliceblue] "
         >
           Manage Inventory
         </button>

@@ -71,7 +71,7 @@ const AddNewInventory = () => {
   };
 
   return (
-    <div className="mt-28 md:mx-auto mx-5 md:w-[30rem] md:px-8 px-3 py-5 border rounded-lg border-[#9B5A43]">
+    <div className="mt-28 md:mx-auto mx-5 md:w-[30rem] md:px-8 px-3 py-5 border rounded-lg border-[#ad6449]">
       <div>
         <img className="h-16 mx-auto" src={logo?.image} alt="" />
         <p className="text-center text-2xl pt-5 text-[#ad644a]">Add Product in collection</p>
@@ -116,7 +116,7 @@ const AddNewInventory = () => {
             placeholder="Quantity"
           />
           <input
-            className="w-full py-3 mb-3 text-[#9B5A43] bg-slate-50 rounded-lg cursor-pointer font-semibold text-xl"
+            className="w-full py-3 mb-3 text-[#ad6449] bg-slate-50 rounded-lg cursor-pointer font-semibold text-xl"
             type="submit"
             value="Insert"
           />

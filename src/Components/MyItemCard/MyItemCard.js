@@ -4,7 +4,7 @@ const MyItemCard = ({ item, handleDeleteMyItem }) => {
   const { _id, name, image, description, price, quantity, supplier } = item;
   return (
     <div>
-      <div className="bg-[#EEEEF0] border border-[#c76f4f] flex md:flex-row flex-col items-center md:px-8 px-4 py-5 md:gap-10 gap-5 rounded-lg ">
+      <div className="bg-[#EEEEF0] border border-[#c76f4f] flex md:flex-row flex-col items-center md:px-8 px-4 py-5 md:gap-10 gap-5 rounded-lg h-full">
         <div>
           <img className="w-96 md:h-80 h-[30rem]" src={image} alt="" />
           <h1 className="text-3xl font-semibold py-3 text-[#c76f4f] text-center">{name}</h1>

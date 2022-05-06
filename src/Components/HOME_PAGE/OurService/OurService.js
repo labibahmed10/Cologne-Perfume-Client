@@ -11,8 +11,8 @@ const OurService = () => {
   return (
     <div className="text-center my-20 py-20 bg-[#EEEEF0]">
       <div className="pb-10">
-        <h1 className="text-5xl font-semibold text-[#9B5A43]">Our Services</h1>
-        <p className="text-3xl py-4 font-semibold text-[#9B5A43]">
+        <h1 className="text-5xl font-semibold text-[#ad6449]">Our Services</h1>
+        <p className="text-3xl py-4 font-semibold text-[#ad6449]">
           Freight Forward Services by Cologne Brand
         </p>
       </div>

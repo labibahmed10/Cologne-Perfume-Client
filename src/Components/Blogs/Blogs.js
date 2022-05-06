@@ -7,7 +7,7 @@ const Blogs = () => {
   }, []);
   return (
     <div className="md:px-28 px-5 md:my-20 my-10">
-      <div className="border border-[#9B5A43] p-4 mb-3">
+      <div className="border border-[#ad6449] p-4 mb-3">
         <h1 className="text-center py-4 text-3xl font-semibold text-[#c76f4f] md:md-0 mb-3">
           Difference between Javascript and NodeJs!
         </h1>
@@ -24,7 +24,7 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div className="border border-[#9B5A43] p-4 mb-3">
+      <div className="border border-[#ad6449] p-4 mb-3">
         <h1 className="text-center py-4 text-3xl font-semibold text-[#c76f4f] md:md-0 mb-3">
           When should you use NodeJS and when should you use MongoDB?
         </h1>
@@ -42,7 +42,7 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div className="border border-[#9B5A43] p-4 mb-3">
+      <div className="border border-[#ad6449] p-4 mb-3">
         <h1 className="text-center py-4 text-3xl font-semibold text-[#c76f4f] md:md-0 mb-3">
           Differences between SQL and NoSQL databases!
         </h1>
@@ -60,7 +60,7 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div className="border border-[#9B5A43] p-4 mb-3">
+      <div className="border border-[#ad6449] p-4 mb-3">
         <h1 className="text-center py-4 text-3xl font-semibold text-[#c76f4f] md:md-0 mb-3">
           What is the purpose of jwt and how does it work?
         </h1>

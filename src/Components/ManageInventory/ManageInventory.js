@@ -5,6 +5,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import SalesInfo from "./SalesInfo";
 
 const ManageInventory = () => {
   // useEffect(() => {
@@ -54,12 +55,14 @@ const ManageInventory = () => {
 
   return (
     <div>
+      <SalesInfo products={products}></SalesInfo>
+
       <div className="flex flex-col w-full">
         <div className="overflow-x-auto mb-5">
           <div className="pb-10 inline-block min-w-full ">
             <div className="overflow-hidden">
               <table className="w-full text-center">
-                <thead className="border-b bg-[#9B5A43]">
+                <thead className="border-b bg-[#ad6449]">
                   <tr>
                     <th scope="col" className="text-xl font-medium text-white px-6 py-4">
                       Serial
@@ -101,8 +104,8 @@ const ManageInventory = () => {
             onClick={() => setPage(n)}
             key={i}
             className={`${
-              page === n ? "bg-[#9B5A43] text-[aliceblue]" : ""
-            } px-3 py-1 border border-[#9B5A43] font-semibold duration-300 hover:bg-[#9B5A43] hover:text-[aliceblue]`}
+              page === n ? "bg-[#ad6449] text-[aliceblue]" : ""
+            } px-3 py-1 border border-[#ad6449] font-semibold duration-300 hover:bg-[#ad6449] hover:text-[aliceblue]`}
           >
             {n + 1}
           </button>
@@ -119,7 +122,7 @@ const ManageInventory = () => {
       <div className="flex justify-center mb-28">
         <button
           onClick={() => navigate("/addinventory")}
-          className="flex items-center text-gray-600  md:py-3 py-2 md:px-6 px-4 md:text-2xl text-lg font-semibold border border-[#9B5A43] hover:bg-[#9B5A43] hover:text-[aliceblue] duration-300"
+          className="flex items-center text-gray-600  md:py-3 py-2 md:px-6 px-4 md:text-2xl text-lg font-semibold border border-[#ad6449] hover:bg-[#ad6449] hover:text-[aliceblue] duration-300"
         >
           <AiOutlinePlus></AiOutlinePlus> Add Product
         </button>

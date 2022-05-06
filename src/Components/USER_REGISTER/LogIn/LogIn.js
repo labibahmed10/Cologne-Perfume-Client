@@ -87,14 +87,14 @@ const LogIn = () => {
               ref={emailRef}
               type="email"
               placeholder="Email"
-              className="font-semibold bg-transparent border-b border-[#9B5A43] w-full pt-4 pb-1 mb-4 focus:outline-none"
+              className="font-semibold bg-transparent border-b border-[#ad6449] w-full pt-4 pb-1 mb-4 focus:outline-none"
               name="email"
             />
             <input
               ref={passRef}
               type="password"
               placeholder="password"
-              className="font-semibold bg-transparent border-b border-[#9B5A43] w-full pt-4 pb-1 mb-4 focus:outline-none"
+              className="font-semibold bg-transparent border-b border-[#ad6449] w-full pt-4 pb-1 mb-4 focus:outline-none"
               autoComplete="off"
             />
 
@@ -104,19 +104,19 @@ const LogIn = () => {
             <input
               type="submit"
               value="Login"
-              className="w-full my-3 py-3 bg-[#9B5A43] text-lg font-semibold text-[aliceblue] cursor-pointer"
+              className="w-full my-3 py-3 bg-[#ad6449] text-lg font-semibold text-[aliceblue] cursor-pointer"
             />
 
             <p className="text-center md:text-xl mb-3">
               Don't have an account?{" "}
-              <Link className="text-[#9B5A43] hover:underline underline-offset-1" to="/signup">
+              <Link className="text-[#ad6449] hover:underline underline-offset-1" to="/signup">
                 Create an account
               </Link>
             </p>
             <p className="text-center md:text-xl  mb-2 text-gray-500">
               <button
                 onClick={sendPassResetEmail}
-                className="hover:underline underline-offset-1 hover:text-[#9B5A43]"
+                className="hover:underline underline-offset-1 hover:text-[#ad6449]"
               >
                 Forgot Your Password?
               </button>
