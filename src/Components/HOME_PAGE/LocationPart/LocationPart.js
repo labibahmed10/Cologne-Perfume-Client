@@ -8,7 +8,7 @@ const LocationPart = () => {
   const warehouse = basicImage.find((item) => item.name === "warehouse");
 
   return (
-    <div style={{ overflowX: "hidden" }} className="md:py-20 py-10 bg-[#F3F3F3] md:px-28 px-4">
+    <div style={{ overflowX: "hidden" , overflowY: "hidden" }} className="md:py-20 py-10 bg-[#F3F3F3] md:px-28 px-4">
       <h1 className="md:text-4xl text-3xl text-center mb-3 font-semibold text-[#ad6449] ">
         Find Our Warehouse Locaion From Anywhere
       </h1>

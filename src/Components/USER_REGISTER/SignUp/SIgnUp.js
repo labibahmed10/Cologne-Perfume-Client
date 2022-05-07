@@ -72,7 +72,7 @@ const SIgnUp = () => {
 
   return (
     <div
-      style={{ overflowX: "hidden" }}
+      style={{ overflowX: "hidden", overflowY: "hidden" }}
       className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-4 mt-20"
     >
       <div

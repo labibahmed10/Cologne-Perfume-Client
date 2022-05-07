@@ -77,7 +77,7 @@ const LogIn = () => {
 
   return (
     <div
-      style={{ overflowX: "hidden" }}
+      style={{ overflowX: "hidden" , overflowY: "hidden" }}
       data-aos="fade-right"
       data-aos-duration="1500"
       data-aos-easing="ease-in-out"
@@ -134,7 +134,7 @@ const LogIn = () => {
       </div>
 
       <div
-        style={{ overflowX: "hidden" }}
+        style={{ overflowX: "hidden", overflowY: "hidden"  }}
         data-aos="fade-left"
         data-aos-duration="1500"
         data-aos-easing="ease-in-out"

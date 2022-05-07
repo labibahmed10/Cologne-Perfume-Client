@@ -29,7 +29,7 @@ const SingleInventory = () => {
     const updatedQuantity = updatingProduct?.quantity - 1;
 
     if (updatedQuantity < 0) {
-      return toast.warning("The Product Is Sold-Out can't reduce more ", {
+      return toast.warning("The Product Is Sold-Out can't reduce more", {
         autoClose: 2000,
       });
     }
@@ -53,7 +53,9 @@ const SingleInventory = () => {
     const quantity = e.target.number.value;
 
     if (parseInt(quantity) < 0 || !quantity) {
-      return toast("Please put a valid number");
+      return toast("Please put a valid number", {
+        autoClose: 2000,
+      });
     }
 
     updatingProduct = {
@@ -65,6 +67,9 @@ const SingleInventory = () => {
     axios.put(`https://guarded-earth-03586.herokuapp.com/inventory/${pid}`, updatingProduct).then((res) => {
       if (res?.data?.acknowledged) {
         setUpdated(updatingProduct);
+        toast("The Product was Re-stocked😃", {
+          autoClose: 2000,
+        });
       }
     });
 
@@ -72,7 +77,7 @@ const SingleInventory = () => {
   };
 
   return (
-    <div style={{ overflowX: "hidden" }} className="md:px-28 px-5">
+    <div style={{ overflowX: "hidden", overflowY: "hidden" }} className="md:px-28 px-5">
       <div className="flex md:flex-row flex-col md:justify-between items-center mt-20 mb-10 gap-10">
         <div
           data-aos="fade-right"

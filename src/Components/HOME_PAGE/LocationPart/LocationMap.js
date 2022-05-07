@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 const LocationMap = () => {
   return (
     <div
-      style={{ overflowX: "hidden" }}
+      style={{ overflowX: "hidden", overflowY: "hidden"  }}
       data-aos="fade-left"
       data-aos-duration="500"
       data-aos-easing="ease-in-out"

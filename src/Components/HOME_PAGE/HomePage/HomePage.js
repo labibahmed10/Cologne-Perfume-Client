@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ExperienceSide from "../ExperienceSide/ExperienceSide";
+import FAQ from "../FAQ/FAQ";
 import InventoryPart from "../InventoryPart/InventoryPart";
 import LocationPart from "../LocationPart/LocationPart";
 import OurService from "../OurService/OurService";
@@ -17,6 +18,7 @@ const HomePage = () => {
       <OurService></OurService>
       <ExperienceSide></ExperienceSide>
       <LocationPart></LocationPart>
+      <FAQ></FAQ>
     </div>
   );
 };

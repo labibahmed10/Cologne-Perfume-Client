@@ -7,7 +7,7 @@ const InventoryPart = () => {
   const [products] = useInventoryItems();
   const navigate = useNavigate();
   return (
-    <div style={{ overflowX: "hidden" }} className="my-28">
+    <div style={{ overflowX: "hidden" , overflowY: "hidden" }} className="my-28">
       <div className="pb-10 text-[#9B5A43] font-semibold">
         <h1 className="text-5xl py-3 text-center">Our Perfume Product</h1>
         <h2 className="text-3xl text-center">Become More Confident & Show Your Better Self</h2>
