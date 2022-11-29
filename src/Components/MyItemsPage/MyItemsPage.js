@@ -6,57 +6,57 @@ import auth from "../../firebase.init";
 import MyItemCard from "../MyItemCard/MyItemCard";
 
 const MyItemsPage = () => {
-  //refresh and get top of the page
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+   //refresh and get top of the page
+   useEffect(() => {
+      window.scrollTo(0, 0);
+   }, []);
 
-  const [user] = useAuthState(auth);
-  const [myItems, setItems] = useState([]);
+   const [user] = useAuthState(auth);
+   const [myItems, setItems] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`https://guarded-earth-03586.herokuapp.com/myItems?email=${user?.email}`, {
-        headers: {
-          authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
-        },
-      })
-      .then((res) => {
-        if (!res?.data?.success) {
-          toast.error(`${res?.data?.message}`, { autoClose: 2000 });
-        } else {
-          setItems(res?.data?.result);
-        }
-      });
-  }, [user]);
+   useEffect(() => {
+      axios
+         .get(`https://worrisome-gray-fish.cyclic.app/myItems?email=${user?.email}`, {
+            headers: {
+               authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+            },
+         })
+         .then((res) => {
+            if (!res?.data?.success) {
+               toast.error(`${res?.data?.message}`, { autoClose: 2000 });
+            } else {
+               setItems(res?.data?.result);
+            }
+         });
+   }, [user]);
 
-  const handleDeleteMyItem = (id) => {
-    const confirm = window.confirm("Are you sure wants to delete?");
-    if (!confirm) {
-      toast("Invalid Operation", {
-        autoClose: 2000,
-      });
-    } else {
-      //using axios to delete items
-      axios.delete(`https://guarded-earth-03586.herokuapp.com/myItems/${id}`).then((res) => {
-        if (res?.data?.acknowledged) {
-          toast("The Item you wants to delete was deleted", {
+   const handleDeleteMyItem = (id) => {
+      const confirm = window.confirm("Are you sure wants to delete?");
+      if (!confirm) {
+         toast("Invalid Operation", {
             autoClose: 2000,
-          });
-          const remaining = myItems.filter((item) => item._id !== id);
-          setItems(remaining);
-        }
-      });
-    }
-  };
+         });
+      } else {
+         //using axios to delete items
+         axios.delete(`https://worrisome-gray-fish.cyclic.app/myItems/${id}`).then((res) => {
+            if (res?.data?.acknowledged) {
+               toast("The Item you wants to delete was deleted", {
+                  autoClose: 2000,
+               });
+               const remaining = myItems.filter((item) => item._id !== id);
+               setItems(remaining);
+            }
+         });
+      }
+   };
 
-  return (
-    <div className="grid md:grid-cols-2 md:px-20 px-4 gap-10 md:mt-28 mt-16">
-      {myItems.map((item) => (
-        <MyItemCard key={item._id} item={item} handleDeleteMyItem={handleDeleteMyItem}></MyItemCard>
-      ))}
-    </div>
-  );
+   return (
+      <div className="grid md:grid-cols-2 md:px-20 px-4 gap-10 md:mt-28 mt-16">
+         {myItems.map((item) => (
+            <MyItemCard key={item._id} item={item} handleDeleteMyItem={handleDeleteMyItem}></MyItemCard>
+         ))}
+      </div>
+   );
 };
 
 export default MyItemsPage;
