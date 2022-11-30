@@ -23,7 +23,7 @@ const SocialSignIn = () => {
    //if user logged in succesfully
    if (user || Guser) {
       axios
-         .post("https://worrisome-gray-fish.cyclic.app/createToken", {
+         .post("https://cologne-perfume-server-production.up.railway.app/createToken", {
             email: user?.user?.email || Guser?.user?.email,
          })
          .then((res) => {

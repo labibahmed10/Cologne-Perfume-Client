@@ -52,7 +52,7 @@ const AddNewInventory = () => {
 
       //using axios for posting
       axios
-         .post("https://worrisome-gray-fish.cyclic.app/inventory", newProduct, {
+         .post("https://cologne-perfume-server-production.up.railway.app/inventory", newProduct, {
             headers: {
                authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
             },

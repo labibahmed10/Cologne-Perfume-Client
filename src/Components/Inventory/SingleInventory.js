@@ -40,7 +40,7 @@ const SingleInventory = () => {
       };
 
       //using axios for updating
-      axios.put(`https://worrisome-gray-fish.cyclic.app/inventory/${pid}`, updatingProduct).then((res) => {
+      axios.put(`https://cologne-perfume-server-production.up.railway.app/inventory/${pid}`, updatingProduct).then((res) => {
          if (res?.data?.acknowledged) {
             setUpdated(updatingProduct);
          }
@@ -64,7 +64,7 @@ const SingleInventory = () => {
       };
 
       //using axios for updating
-      axios.put(`https://worrisome-gray-fish.cyclic.app/inventory/${pid}`, updatingProduct).then((res) => {
+      axios.put(`https://cologne-perfume-server-production.up.railway.app/inventory/${pid}`, updatingProduct).then((res) => {
          if (res?.data?.acknowledged) {
             setUpdated(updatingProduct);
             toast("The Product was Re-stocked😃", {

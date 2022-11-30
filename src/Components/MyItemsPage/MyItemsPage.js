@@ -16,7 +16,7 @@ const MyItemsPage = () => {
 
    useEffect(() => {
       axios
-         .get(`https://worrisome-gray-fish.cyclic.app/myItems?email=${user?.email}`, {
+         .get(`https://cologne-perfume-server-production.up.railway.app/myItems?email=${user?.email}`, {
             headers: {
                authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
             },
@@ -38,7 +38,7 @@ const MyItemsPage = () => {
          });
       } else {
          //using axios to delete items
-         axios.delete(`https://worrisome-gray-fish.cyclic.app/myItems/${id}`).then((res) => {
+         axios.delete(`https://cologne-perfume-server-production.up.railway.app/myItems/${id}`).then((res) => {
             if (res?.data?.acknowledged) {
                toast("The Item you wants to delete was deleted", {
                   autoClose: 2000,

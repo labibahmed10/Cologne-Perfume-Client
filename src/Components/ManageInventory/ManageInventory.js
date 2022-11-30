@@ -22,7 +22,7 @@ const ManageInventory = () => {
 
    useEffect(() => {
       (async () => {
-         await axios.get(`https://worrisome-gray-fish.cyclic.app/inventory?pageNum=${page}&size=${size}`).then((res) => {
+         await axios.get(`https://cologne-perfume-server-production.up.railway.app/inventory?pageNum=${page}&size=${size}`).then((res) => {
             setProducts(res?.data?.result);
             setTPage(res?.data?.count / size);
          });
@@ -38,7 +38,7 @@ const ManageInventory = () => {
          });
       } else {
          //used axios for deleting
-         axios.delete(`https://worrisome-gray-fish.cyclic.app/deleteItem/${id}`).then((res) => {
+         axios.delete(`https://cologne-perfume-server-production.up.railway.app/deleteItem/${id}`).then((res) => {
             if (res?.data?.acknowledged) {
                toast("The Item you wants to delete was deleted", {
                   autoClose: 2000,

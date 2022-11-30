@@ -62,7 +62,7 @@ const SIgnUp = () => {
 
    //created jwt for sign up
    if (user) {
-      axios.post("https://worrisome-gray-fish.cyclic.app/createToken", { email: user?.user?.email }).then((res) => {
+      axios.post("https://cologne-perfume-server-production.up.railway.app/createToken", { email: user?.user?.email }).then((res) => {
          localStorage.setItem("accessToken", res?.data);
          navigate("/");
       });
