@@ -22,11 +22,9 @@ const SocialSignIn = () => {
 
    //if user logged in succesfully
    if (user || Guser) {
-      axios
-         .post("https://cologne-perfume-server-production.up.railway.app/createToken", {
+      axios.post("https://cologne-perfume-server-production.up.railway.app/createToken", {
             email: user?.user?.email || Guser?.user?.email,
-         })
-         .then((res) => {
+         }).then((res) => {
             localStorage.setItem("accessToken", res?.data);
          });
 
