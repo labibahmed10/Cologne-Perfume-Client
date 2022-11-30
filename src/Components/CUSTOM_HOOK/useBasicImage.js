@@ -1,10 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Spinner from "../Spinner/Spinner";
+import { useEffect, useState } from "react";
 
 const useBasicImage = () => {
    const [basicImage, setBasicImage] = useState([]);
-   const [isLoading, setLoading] = useState(false);
 
    useEffect(() => {
       async function fetchData() {

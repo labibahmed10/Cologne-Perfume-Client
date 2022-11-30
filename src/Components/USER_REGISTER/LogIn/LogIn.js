@@ -49,9 +49,10 @@ const LogIn = () => {
 
    //created jwt for login
    if (user) {
-      axios.post("https://cologne-perfume-server-production.up.railway.app/createToken", { email: user?.user?.email }).then((res) => {
-         localStorage.setItem("accessToken", res?.data);
-         navigate(from, { replace: true });
+      axios.post("https://cologne-perfume-server-production.up.railway.app/createToken",{ email: user?.user?.email })
+         .then((res) => {
+            localStorage.setItem("accessToken", res?.data);
+            navigate(from, { replace: true });
       });
    }
 

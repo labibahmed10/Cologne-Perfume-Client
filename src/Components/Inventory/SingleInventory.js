@@ -25,7 +25,7 @@ const SingleInventory = () => {
    }, [matched]);
 
    //deleting single quantity
-   const deleteQuantity = () => {
+   const deleteQuantity = async () => {
       const updatedQuantity = updatingProduct?.quantity - 1;
 
       if (updatedQuantity < 0) {
@@ -40,7 +40,7 @@ const SingleInventory = () => {
       };
 
       //using axios for updating
-      axios.put(`https://cologne-perfume-server-production.up.railway.app/inventory/${pid}`, updatingProduct).then((res) => {
+      await axios.put(`https://cologne-perfume-server-production.up.railway.app/inventory/${pid}`, updatingProduct).then((res) => {
          if (res?.data?.acknowledged) {
             setUpdated(updatingProduct);
          }
@@ -48,7 +48,7 @@ const SingleInventory = () => {
    };
 
    //updating quantity by form
-   const updateQuantitybyForm = (e) => {
+   const updateQuantitybyForm = async (e) => {
       e.preventDefault();
       const quantity = e.target.number.value;
 
@@ -64,7 +64,7 @@ const SingleInventory = () => {
       };
 
       //using axios for updating
-      axios.put(`https://cologne-perfume-server-production.up.railway.app/inventory/${pid}`, updatingProduct).then((res) => {
+      await axios.put(`https://cologne-perfume-server-production.up.railway.app/inventory/${pid}`, updatingProduct).then((res) => {
          if (res?.data?.acknowledged) {
             setUpdated(updatingProduct);
             toast("The Product was Re-stocked😃", {

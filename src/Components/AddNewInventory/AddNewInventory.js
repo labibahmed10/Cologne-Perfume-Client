@@ -18,7 +18,7 @@ const AddNewInventory = () => {
    //getting user for sending token to backend
    const [user] = useAuthState(auth);
 
-   const handleAddNewProduct = (e) => {
+   const handleAddNewProduct = async (e) => {
       e.preventDefault();
       const name = e.target.name.value;
       const email = e.target.email.value;
@@ -51,8 +51,7 @@ const AddNewInventory = () => {
       };
 
       //using axios for posting
-      axios
-         .post("https://cologne-perfume-server-production.up.railway.app/inventory", newProduct, {
+      await axios.post("https://cologne-perfume-server-production.up.railway.app/inventory", newProduct, {
             headers: {
                authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
             },

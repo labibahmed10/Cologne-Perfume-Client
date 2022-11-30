@@ -29,7 +29,7 @@ const ManageInventory = () => {
       })();
    }, [size, page]);
 
-   const handleDeleteProduct = (id) => {
+   const handleDeleteProduct = async (id) => {
       const confirm = window.confirm("Are you sure wants to delete?");
 
       if (!confirm) {
@@ -37,8 +37,9 @@ const ManageInventory = () => {
             autoClose: 2000,
          });
       } else {
-         //used axios for deleting
-         axios.delete(`https://cologne-perfume-server-production.up.railway.app/deleteItem/${id}`).then((res) => {
+         
+         //used axios for
+         await axios.delete(`https://cologne-perfume-server-production.up.railway.app/deleteItem/${id}`).then((res) => {
             if (res?.data?.acknowledged) {
                toast("The Item you wants to delete was deleted", {
                   autoClose: 2000,

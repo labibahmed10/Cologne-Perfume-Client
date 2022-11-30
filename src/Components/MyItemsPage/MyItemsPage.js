@@ -15,30 +15,31 @@ const MyItemsPage = () => {
    const [myItems, setItems] = useState([]);
 
    useEffect(() => {
-      axios
-         .get(`https://cologne-perfume-server-production.up.railway.app/myItems?email=${user?.email}`, {
-            headers: {
-               authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
-            },
-         })
-         .then((res) => {
-            if (!res?.data?.success) {
-               toast.error(`${res?.data?.message}`, { autoClose: 2000 });
-            } else {
-               setItems(res?.data?.result);
-            }
-         });
+      (async () => {
+         await axios.get(`https://cologne-perfume-server-production.up.railway.app/myItems?email=${user?.email}`, {
+               headers: {
+                  authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+               },
+            }).then((res) => {
+               if (!res?.data?.success) {
+                  toast.error(`${res?.data?.message}`, { autoClose: 2000 });
+               } else {
+                  setItems(res?.data?.result);
+               }
+            });
+      })();
    }, [user]);
 
-   const handleDeleteMyItem = (id) => {
+   const handleDeleteMyItem = async (id) => {
       const confirm = window.confirm("Are you sure wants to delete?");
       if (!confirm) {
          toast("Invalid Operation", {
             autoClose: 2000,
          });
       } else {
+         
          //using axios to delete items
-         axios.delete(`https://cologne-perfume-server-production.up.railway.app/myItems/${id}`).then((res) => {
+         await axios.delete(`https://cologne-perfume-server-production.up.railway.app/myItems/${id}`).then((res) => {
             if (res?.data?.acknowledged) {
                toast("The Item you wants to delete was deleted", {
                   autoClose: 2000,
