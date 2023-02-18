@@ -22,10 +22,14 @@ const ManageInventory = () => {
 
    useEffect(() => {
       (async () => {
-         await axios.get(`https://cologne-perfume-server-production.up.railway.app/inventory?pageNum=${page}&size=${size}`).then((res) => {
-            setProducts(res?.data?.result);
-            setTPage(res?.data?.count / size);
-         });
+         await axios
+            .get(
+               `https://worrisome-gray-fish.cyclic.app/inventory?pageNum=${page}&size=${size}`,
+            )
+            .then((res) => {
+               setProducts(res?.data?.result);
+               setTPage(res?.data?.count / size);
+            });
       })();
    }, [size, page]);
 
@@ -37,17 +41,18 @@ const ManageInventory = () => {
             autoClose: 2000,
          });
       } else {
-         
          //used axios for
-         await axios.delete(`https://cologne-perfume-server-production.up.railway.app/deleteItem/${id}`).then((res) => {
-            if (res?.data?.acknowledged) {
-               toast("The Item you wants to delete was deleted", {
-                  autoClose: 2000,
-               });
-               const remaining = products.filter((item) => item._id !== id);
-               setProducts(remaining);
-            }
-         });
+         await axios
+            .delete(`https://worrisome-gray-fish.cyclic.app/deleteItem/${id}`)
+            .then((res) => {
+               if (res?.data?.acknowledged) {
+                  toast("The Item you wants to delete was deleted", {
+                     autoClose: 2000,
+                  });
+                  const remaining = products.filter((item) => item._id !== id);
+                  setProducts(remaining);
+               }
+            });
       }
    };
 
@@ -62,27 +67,50 @@ const ManageInventory = () => {
                      <table className="w-full text-center">
                         <thead className="border-b bg-[#ad6449]">
                            <tr>
-                              <th scope="col" className="text-xl font-medium text-white px-6 py-4">
+                              <th
+                                 scope="col"
+                                 className="text-xl font-medium text-white px-6 py-4"
+                              >
                                  Serial
                               </th>
-                              <th scope="col" className="text-xl font-medium text-white px-6 py-4">
+                              <th
+                                 scope="col"
+                                 className="text-xl font-medium text-white px-6 py-4"
+                              >
                                  Name
                               </th>
-                              <th scope="col" className="text-xl font-medium text-white px-6 py-4">
+                              <th
+                                 scope="col"
+                                 className="text-xl font-medium text-white px-6 py-4"
+                              >
                                  Image
                               </th>
-                              <th scope="col" className="text-xl font-medium text-white px-6 py-4">
+                              <th
+                                 scope="col"
+                                 className="text-xl font-medium text-white px-6 py-4"
+                              >
                                  Quantity
                               </th>
-                              <th scope="col" className="text-xl font-medium text-white px-6 py-4">
+                              <th
+                                 scope="col"
+                                 className="text-xl font-medium text-white px-6 py-4"
+                              >
                                  Price
                               </th>
-                              <th scope="col" className="text-xl font-medium text-white px-6 py-4"></th>
+                              <th
+                                 scope="col"
+                                 className="text-xl font-medium text-white px-6 py-4"
+                              ></th>
                            </tr>
                         </thead>
                         <tbody>
                            {products.map((item, i) => (
-                              <TableRow key={item._id} item={item} i={i} handleDeleteProduct={handleDeleteProduct}></TableRow>
+                              <TableRow
+                                 key={item._id}
+                                 item={item}
+                                 i={i}
+                                 handleDeleteProduct={handleDeleteProduct}
+                              ></TableRow>
                            ))}
                         </tbody>
                      </table>
@@ -103,7 +131,11 @@ const ManageInventory = () => {
                   {n + 1}
                </button>
             ))}
-            <select defaultValue={size} className="p-2" onChange={(e) => setSize(e.target.value)}>
+            <select
+               defaultValue={size}
+               className="p-2"
+               onChange={(e) => setSize(e.target.value)}
+            >
                <option value="5">5</option>
                <option value="10">10</option>
                <option value="15">15</option>

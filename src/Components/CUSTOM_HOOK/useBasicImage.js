@@ -6,7 +6,9 @@ const useBasicImage = () => {
 
    useEffect(() => {
       async function fetchData() {
-         const { data } = await axios.get("https://cologne-perfume-server-production.up.railway.app/basicImages");
+         const { data } = await axios.get(
+            "https://worrisome-gray-fish.cyclic.app/basicImages",
+         );
          await setBasicImage(data);
       }
       fetchData();

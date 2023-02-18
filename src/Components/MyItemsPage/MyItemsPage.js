@@ -16,11 +16,13 @@ const MyItemsPage = () => {
 
    useEffect(() => {
       (async () => {
-         await axios.get(`https://cologne-perfume-server-production.up.railway.app/myItems?email=${user?.email}`, {
+         await axios
+            .get(`https://worrisome-gray-fish.cyclic.app/myItems?email=${user?.email}`, {
                headers: {
                   authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
                },
-            }).then((res) => {
+            })
+            .then((res) => {
                if (!res?.data?.success) {
                   toast.error(`${res?.data?.message}`, { autoClose: 2000 });
                } else {
@@ -37,24 +39,29 @@ const MyItemsPage = () => {
             autoClose: 2000,
          });
       } else {
-         
          //using axios to delete items
-         await axios.delete(`https://cologne-perfume-server-production.up.railway.app/myItems/${id}`).then((res) => {
-            if (res?.data?.acknowledged) {
-               toast("The Item you wants to delete was deleted", {
-                  autoClose: 2000,
-               });
-               const remaining = myItems.filter((item) => item._id !== id);
-               setItems(remaining);
-            }
-         });
+         await axios
+            .delete(`https://worrisome-gray-fish.cyclic.app/myItems/${id}`)
+            .then((res) => {
+               if (res?.data?.acknowledged) {
+                  toast("The Item you wants to delete was deleted", {
+                     autoClose: 2000,
+                  });
+                  const remaining = myItems.filter((item) => item._id !== id);
+                  setItems(remaining);
+               }
+            });
       }
    };
 
    return (
       <div className="grid md:grid-cols-2 md:px-20 px-4 gap-10 md:mt-28 mt-16">
          {myItems.map((item) => (
-            <MyItemCard key={item._id} item={item} handleDeleteMyItem={handleDeleteMyItem}></MyItemCard>
+            <MyItemCard
+               key={item._id}
+               item={item}
+               handleDeleteMyItem={handleDeleteMyItem}
+            ></MyItemCard>
          ))}
       </div>
    );

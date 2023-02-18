@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+   useSendPasswordResetEmail,
+   useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
@@ -23,7 +26,8 @@ const LogIn = () => {
    const passRef = useRef("");
 
    // firebase hooks for sign in and reset email..
-   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+   const [signInWithEmailAndPassword, user, loading, error] =
+      useSignInWithEmailAndPassword(auth);
    const [sendPasswordResetEmail, sending, Perror] = useSendPasswordResetEmail(auth);
 
    // redirection
@@ -49,11 +53,14 @@ const LogIn = () => {
 
    //created jwt for login
    if (user) {
-      axios.post("https://cologne-perfume-server-production.up.railway.app/createToken",{ email: user?.user?.email })
+      axios
+         .post("https://worrisome-gray-fish.cyclic.app/createToken", {
+            email: user?.user?.email,
+         })
          .then((res) => {
             localStorage.setItem("accessToken", res?.data);
             navigate(from, { replace: true });
-      });
+         });
    }
 
    if (loading || sending) {
@@ -115,12 +122,18 @@ const LogIn = () => {
 
                   <p className="text-center md:text-xl mb-3">
                      Don't have an account?{" "}
-                     <Link className="text-[#ad6449] hover:underline underline-offset-1" to="/signup">
+                     <Link
+                        className="text-[#ad6449] hover:underline underline-offset-1"
+                        to="/signup"
+                     >
                         Create an account
                      </Link>
                   </p>
                   <p className="text-center md:text-xl  mb-2 text-gray-500">
-                     <button onClick={sendPassResetEmail} className="hover:underline underline-offset-1 hover:text-[#ad6449]">
+                     <button
+                        onClick={sendPassResetEmail}
+                        className="hover:underline underline-offset-1 hover:text-[#ad6449]"
+                     >
                         Forgot Your Password?
                      </button>
                   </p>

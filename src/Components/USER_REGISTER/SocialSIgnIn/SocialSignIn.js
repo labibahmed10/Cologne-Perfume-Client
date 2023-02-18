@@ -22,16 +22,21 @@ const SocialSignIn = () => {
 
    //if user logged in succesfully
    if (user || Guser) {
-      axios.post("https://cologne-perfume-server-production.up.railway.app/createToken", {
+      axios
+         .post("https://worrisome-gray-fish.cyclic.app/createToken", {
             email: user?.user?.email || Guser?.user?.email,
-         }).then((res) => {
+         })
+         .then((res) => {
             localStorage.setItem("accessToken", res?.data);
          });
 
-      toast.success(`Log In Succesfull 😃 ${user?.user?.displayName ? user?.user?.displayName : ""}`, {
-         position: "top-center",
-         autoClose: 2000,
-      });
+      toast.success(
+         `Log In Succesfull 😃 ${user?.user?.displayName ? user?.user?.displayName : ""}`,
+         {
+            position: "top-center",
+            autoClose: 2000,
+         },
+      );
 
       navigate(from, { replace: true });
    }
@@ -60,7 +65,11 @@ const SocialSignIn = () => {
                />
             </div>
             <div onClick={() => signInWithGithub()}>
-               <img className="w-12 cursor-pointer" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" />
+               <img
+                  className="w-12 cursor-pointer"
+                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                  alt=""
+               />
             </div>
          </div>
       </div>

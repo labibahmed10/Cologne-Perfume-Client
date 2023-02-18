@@ -27,9 +27,10 @@ const SIgnUp = () => {
    // redirection
    const navigate = useNavigate();
 
-   const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, {
-      sendEmailVerification: true,
-   });
+   const [createUserWithEmailAndPassword, user, loading, error] =
+      useCreateUserWithEmailAndPassword(auth, {
+         sendEmailVerification: true,
+      });
 
    const handleSubmitSignUp = (e) => {
       e.preventDefault();
@@ -62,11 +63,14 @@ const SIgnUp = () => {
 
    //created jwt for sign up
    if (user) {
-      axios.post("https://cologne-perfume-server-production.up.railway.app/createToken", { email: user?.user?.email })
-           .then((res) => {
-             localStorage.setItem("accessToken", res?.data);
-             navigate("/");
-      });
+      axios
+         .post("https://worrisome-gray-fish.cyclic.app/createToken", {
+            email: user?.user?.email,
+         })
+         .then((res) => {
+            localStorage.setItem("accessToken", res?.data);
+            navigate("/");
+         });
    }
 
    return (
@@ -74,10 +78,22 @@ const SIgnUp = () => {
          style={{ overflowX: "hidden", overflowY: "hidden" }}
          className="flex md:flex-row flex-col items-center md:h-[80vh] md:w-[90rem] w-full mx-auto justify-center px-4 mt-20"
       >
-         <div data-aos="fade-right" data-aos-duration="1500" data-aos-easing="ease-in-out" data-aos-once="false" className="w-full">
+         <div
+            data-aos="fade-right"
+            data-aos-duration="1500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="w-full"
+         >
             <img className="md:h-[39.5rem]" src={matched?.image} alt="" />
          </div>
-         <div data-aos="fade-left" data-aos-duration="1500" data-aos-easing="ease-in-out" data-aos-once="false" className="md:w-full">
+         <div
+            data-aos="fade-left"
+            data-aos-duration="1500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            className="md:w-full"
+         >
             <div className="md:px-16 px-5 py-8 border bg-[#EEEEF0] text-[#3D3D3D]">
                <div>
                   <img className="w-52 mx-auto py-5" src={logo?.image} alt="" />
@@ -123,7 +139,10 @@ const SIgnUp = () => {
                   />
                   <p className="text-center text-xl">
                      Already have an account?{" "}
-                     <Link className="text-[#ad6449] hover:underline  underline-offset-1" to="/login">
+                     <Link
+                        className="text-[#ad6449] hover:underline  underline-offset-1"
+                        to="/login"
+                     >
                         Login
                      </Link>
                   </p>
