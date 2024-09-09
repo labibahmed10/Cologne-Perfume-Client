@@ -11,7 +11,6 @@ import HomePage from "./Components/HOME_PAGE/HomePage/HomePage";
 import LogIn from "./Components/USER_REGISTER/LogIn/LogIn";
 import Footer from "./Components/Footer/Footer";
 import NotFound from "./Components/NotFound/NotFound";
-import Blogs from "./Components/Blogs/Blogs";
 import MyItemsPage from "./Components/MyItemsPage/MyItemsPage";
 
 //AOS animation
@@ -26,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/home" element={<HomePage></HomePage>}></Route>
-        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+
         <Route
           path="/inventory/:pid"
           element={

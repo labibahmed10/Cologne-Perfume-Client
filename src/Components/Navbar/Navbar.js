@@ -51,64 +51,38 @@ const Navbar = () => {
         <div className="collapse navbar-collapse items-center" id="navbarSupportedContent">
           <ul className="navbar-nav flex md:items-center gap-3 md:gap-5 flex-col pl-1 pt-2  pb-1 md:pt-0 text-xl">
             <li className="nav-item">
-              <NavLink
-                className={({ isActive }) => (isActive ? "text-[#be6e51]" : "text-[aliceblue]")}
-                to="/home"
-              >
+              <NavLink className={({ isActive }) => (isActive ? "text-[#be6e51]" : "text-[aliceblue]")} to="/home">
                 Home
               </NavLink>
             </li>
+
             <li className="nav-item ">
-              <NavLink
-                className={({ isActive }) => (isActive ? "text-[#be6e51] " : "text-[aliceblue]")}
-                to="/blogs"
-              >
-                Blogs
-              </NavLink>
-            </li>
-            <li className="nav-item ">
-              <NavLink
-                className={({ isActive }) => (isActive ? "text-[#be6e51]" : "text-[aliceblue] ")}
-                to="/inventory"
-              >
+              <NavLink className={({ isActive }) => (isActive ? "text-[#be6e51]" : "text-[aliceblue] ")} to="/inventory">
                 Manage Inventory
               </NavLink>
             </li>
             <li className="nav-item ">
               {user && (
-                <NavLink
-                  className={({ isActive }) => (isActive ? "text-[#be6e51] " : "text-[aliceblue] ")}
-                  to="/addinventory"
-                >
+                <NavLink className={({ isActive }) => (isActive ? "text-[#be6e51] " : "text-[aliceblue] ")} to="/addinventory">
                   Add Items
                 </NavLink>
               )}
             </li>
             <li className="nav-item ">
               {user && (
-                <NavLink
-                  className={({ isActive }) => (isActive ? "text-[#be6e51] " : "text-[aliceblue] ")}
-                  to="/myitems"
-                >
+                <NavLink className={({ isActive }) => (isActive ? "text-[#be6e51] " : "text-[aliceblue] ")} to="/myitems">
                   My Items
                 </NavLink>
               )}
             </li>
             <li className="nav-item ">
               {user ? (
-                <button
-                  onClick={handleSignOut}
-                  className={`border border-[aliceblue] px-3 py-[0.1rem] text-[aliceblue]`}
-                >
+                <button onClick={handleSignOut} className={`border border-[aliceblue] px-3 py-[0.1rem] text-[aliceblue]`}>
                   Log Out
                 </button>
               ) : (
                 <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-[#be6e51] border border-[#be6e51] px-3 py-1"
-                      : "text-[aliceblue] border px-3 py-1"
-                  }
+                  className={({ isActive }) => (isActive ? "text-[#be6e51] border border-[#be6e51] px-3 py-1" : "text-[aliceblue] border px-3 py-1")}
                   to="/login"
                 >
                   LogIn
@@ -117,11 +91,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item ">
               <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-[#be6e51] border border-[#be6e51] px-3 py-1"
-                    : "text-[aliceblue] border px-3 py-1"
-                }
+                className={({ isActive }) => (isActive ? "text-[#be6e51] border border-[#be6e51] px-3 py-1" : "text-[aliceblue] border px-3 py-1")}
                 to="/signup"
               >
                 SignUp
